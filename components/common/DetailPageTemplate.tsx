@@ -39,7 +39,7 @@ const DetailPageTemplate = async ({
         />
         <div className="pt-[104px] flex">
           <div className="mr-auto">
-            <h1 className="text-[26px] font-bold leading-[26px] tracking-[-0.26px] mb-2">
+            <h1 className="text-[26px] font-semibold leading-[26px] tracking-[-0.26px] mb-2">
               {info.engName}
             </h1>
             <span className="text-acodegray-100 text-[20px] font-semibold leading-[20px] tracking-[-0.5px] mb-[56px] block">

@@ -13,9 +13,14 @@ const Slide1 = () => {
         <div>떠올리기 쉬운 향 비유로 향료 용어 이해</div>
         <div>실제 사용자들의 리뷰 기반 향수 특징 파악</div>
       </div>
-      <div className="fixed bottom-0 w-full h-[500px]">
-        <Image src={Onboarding1} fill priority alt="Onboarding1" />
-      </div>
+      <Image
+        src={Onboarding1}
+        fill
+        priority
+        alt="Onboarding2"
+        style={{ objectFit: 'contain' }}
+        className="mt-[217px]"
+      />
     </div>
   );
 };

@@ -13,7 +13,7 @@ interface SliderProps {
 
 const Slider = ({ slides, keys }: SliderProps) => {
   return (
-    <div className="slider-container">
+    <div className="slider-container h-full">
       <Swiper
         modules={[Pagination]}
         pagination={{
@@ -23,7 +23,7 @@ const Slider = ({ slides, keys }: SliderProps) => {
             return `<span class="${className} onboard-custom-bullet"></span>`;
           },
         }}
-        className="h-screen w-full onboard-slider"
+        className="h-full w-full onboard-slider"
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={keys[index]}>{slide}</SwiperSlide>

@@ -1,12 +1,38 @@
-import Onboard from '@/components/home/Onboarding';
+'use client';
 
-const page = () => {
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { AcodeLogo } from '@/public/images';
+
+const Onboard = () => {
+  const [isDone, setIsDone] = useState<boolean>(false);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const doneTimer = setTimeout(() => {
+      setIsDone(true);
+    }, 1000);
+
+    const timer = setTimeout(() => {
+      router.push('/onboarding');
+    }, 1500);
+
+    return () => {
+      clearTimeout(doneTimer);
+      clearTimeout(timer);
+    };
+  }, [router]);
+
   return (
-    <div className="bg-black min-h-screen flex justify-center items-center">
-      <div>
-        <Onboard />
-      </div>
+    <div
+      className={` min-h-screen flex justify-center items-center transition duration-700 ${
+        isDone ? 'bg-acodewhite' : 'bg-acodeblack'
+      }`}
+    >
+      <AcodeLogo className={`transition ${isDone ? 'invisible' : ''}`} />
     </div>
   );
 };
-export default page;
+
+export default Onboard;

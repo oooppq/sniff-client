@@ -5,18 +5,24 @@ import Link from 'next/link';
 
 const Slide3 = () => {
   return (
-    <div>
-      <div className="h0 mt-12 px-4">
+    <div className="relative flex flex-col h-full overflow-hidden">
+      <div className="h0 mt-12 px-4 mb-auto">
         <div>어코드에서</div>
         <div>나만의 향수 코드를 찾아보세요</div>
       </div>
-      <div className="fixed bottom-0 w-full h-[589px]">
-        <Image src={Onboarding3} fill priority alt="Onboarding3" />
-      </div>
-      <div className="fixed bottom-[164px] right-0 left-0 px-4 z-50">
+      <Image
+        src={Onboarding3}
+        fill
+        priority
+        alt="Onboarding3"
+        style={{ objectFit: 'contain' }}
+        className="mt-[149px]"
+      />
+
+      <div className="px-4 z-50 mb-8">
         <Link
           href="/login"
-          className="bg-black text-white w-full rounded-lg h-[56px] inline-flex items-center justify-center"
+          className="h2 bg-black text-white w-full rounded h-[56px] inline-flex items-center justify-center"
         >
           어코드 시작하기
         </Link>

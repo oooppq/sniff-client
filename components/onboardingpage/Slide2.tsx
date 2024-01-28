@@ -13,9 +13,15 @@ const Slide2 = () => {
         <div>향수 취향과 분위기를 기반으로</div>
         <div>어울리는 향수 계열과 제품 추천</div>
       </div>
-      <div className="fixed bottom-0 w-full h-[500px]">
-        <Image src={Onboarding2} fill priority alt="Onboarding2" />
-      </div>
+
+      <Image
+        src={Onboarding2}
+        fill
+        priority
+        alt="Onboarding2"
+        style={{ objectFit: 'contain' }}
+        className="mt-[217px]"
+      />
     </div>
   );
 };

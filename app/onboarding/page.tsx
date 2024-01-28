@@ -11,12 +11,10 @@ const Page = () => {
     { name: 'slide3', component: <Slide3 /> },
   ];
   return (
-    <div>
-      <Slider
-        slides={slides.map((slide) => slide.component)}
-        keys={slides.map((slide) => slide.name)}
-      />
-    </div>
+    <Slider
+      slides={slides.map((slide) => slide.component)}
+      keys={slides.map((slide) => slide.name)}
+    />
   );
 };
 
