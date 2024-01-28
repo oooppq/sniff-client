@@ -21,6 +21,7 @@ const SpiceRecommendation = async () => {
   );
   if (!res.ok) return null;
   const spiceInfo = await res.json();
+
   const textColor =
     spiceInfo.ingredientName === '투베로즈'
       ? 'text-acodegray-700'
@@ -37,9 +38,11 @@ const SpiceRecommendation = async () => {
         <Link
           href={`spices/${encodeURIComponent(spiceInfo.ingredientName)}`}
           className={`${textColor} h-11 mt-1.5 px-2.5 py-1 bg-gradient-to-r ${
-            spiceColorMapping[spiceInfo.ingredientName].start
+            spiceColorMapping[spiceInfo.ingredientName]?.start ||
+            'from-acodeblack'
           } ${
-            spiceColorMapping[spiceInfo.ingredientName].end
+            spiceColorMapping[spiceInfo.ingredientName]?.end ||
+            'from-acodeblack'
           }  rounded-[4px] justify-center items-center gap-2.5 inline-flex`}
         >
           <span className="">{spiceInfo.acode}</span>
