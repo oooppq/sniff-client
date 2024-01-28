@@ -63,7 +63,7 @@ const DetailPageTemplate = async ({
             />
           ) : null}
         </div>
-        {sort !== 'ingredient' ? (
+        {sort !== 'brand' ? (
           <div className="flex text-[14px] font-medium tracking-[-0.14px] gap-[10px] mb-[20px]">
             {info.keyword.map((tag: string) => (
               <span key={tag} className="">
