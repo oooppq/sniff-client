@@ -12,7 +12,7 @@ const Test = () => {
           <div>향 노트 & 키워드 기반</div> <div>매칭테스트</div>
         </div>
       </div>
-      <Link href="/matching/test">
+      <Link href="/find-taste/test">
         <div className="text-white place-items-end mt-[272px] ml-[200px] ">
           <div className="flex flex-col h2">
             테스트시작

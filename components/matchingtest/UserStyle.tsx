@@ -5,7 +5,7 @@ interface Family {
   familyEngName: string;
   summary: string;
   icon: string;
-  keyword: string;
+  keyword: string[];
 }
 
 interface UserStyleProps {
@@ -45,7 +45,7 @@ const UserStyle = ({ families }: UserStyleProps) => {
 
                 <div className="body1 mb-6">{family.summary}</div>
                 <div className="flex flex-row">
-                  {family.keyword.split(',').map((keywords) => (
+                  {family.keyword.map((keywords) => (
                     <div key={keywords} className="body2 mr-2.5">
                       <span className="text-acodegray-400">#</span>
                       {keywords}

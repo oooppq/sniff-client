@@ -1,32 +1,24 @@
-'use client';
-
 import { Loading1, Loading2, Loading3, Loading4 } from '@/public/images';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Header from '@/components/matchingtest/Header';
 
 interface LoadingPageProps {
-  searchParams: { [key: string]: string | undefined };
+  setIsDone: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Page = ({ searchParams }: LoadingPageProps) => {
+const Loading = ({ setIsDone }: LoadingPageProps) => {
   const router = useRouter();
+
   const [currentIconIndex, setCurrentIconIndex] = useState(0);
   const icons = [<Loading1 />, <Loading2 />, <Loading3 />, <Loading4 />];
   const lastIconIndex = icons.length - 1;
 
   useEffect(() => {
-    const params = new URLSearchParams();
-    Object.entries(searchParams).forEach(([key, value]) => {
-      if (value !== undefined) {
-        params.append(key, value);
-      }
-    });
-
     let timer: NodeJS.Timeout;
     if (currentIconIndex === lastIconIndex) {
       timer = setTimeout(() => {
-        router.push(`/result?${params.toString()}`);
+        setIsDone(true);
       }, 1500);
     }
 
@@ -35,7 +27,7 @@ const Page = ({ searchParams }: LoadingPageProps) => {
         clearTimeout(timer);
       }
     };
-  }, [router, searchParams, currentIconIndex, lastIconIndex]);
+  }, [router, currentIconIndex, lastIconIndex, setIsDone]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -63,4 +55,4 @@ const Page = ({ searchParams }: LoadingPageProps) => {
     </div>
   );
 };
-export default Page;
+export default Loading;

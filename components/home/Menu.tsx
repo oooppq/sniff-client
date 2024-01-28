@@ -5,7 +5,7 @@ const Menu = () => {
   return (
     <div className="mt-9 px-4 flex text-[14px] overflow-auto">
       <Link
-        href="/matching"
+        href="/find-taste"
         className="body2 medium shrink-0 w-[198px] h-[95px] pt-[17px] pl-4 pr-[18px] text-acodeblack bg-acodegray-50 rounded-[4px] flex justify-between"
       >
         <span className="">

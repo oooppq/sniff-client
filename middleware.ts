@@ -12,7 +12,7 @@ export function middleware(request: NextRequest) {
   if (
     (pathname === '/welcome' ||
       pathname.includes('/mypage') ||
-      pathname.includes('/find-taste') ||
+      // pathname.includes('/find-taste') ||
       pathname.includes('/reviews')) &&
     !userInfo
   )
@@ -25,7 +25,7 @@ export const config = {
     '/login',
     '/welcome',
     '/mypage/:path',
-    '/find-taste/:path',
+    // '/find-taste/:path',
     '/perfumes/:path/reviews/new',
   ],
 };

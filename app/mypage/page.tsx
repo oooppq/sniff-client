@@ -74,11 +74,11 @@ const page = async ({ searchParams }: MyPageProps) => {
       </div>
       <hr className="mt-9 mb-[34px] border-[3px] border-acodegray-50" />
       <div className="flex flex-col mx-4">
-        <Link href="/" className="body1">
+        <Link href="/mypage" className="body1">
           향수 제품 추가 요청
         </Link>
         <hr className="mt-[17px] mb-[18px] border-top-[1.5px] border-acodegray-50" />
-        <Link href="/" className="body1">
+        <Link href="/mypage" className="body1">
           광고 제휴 문의
         </Link>
         <div className="flex flex-col mt-[94px] mb-[41px]">

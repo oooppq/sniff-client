@@ -16,7 +16,7 @@ interface Family {
   familyEngName: string;
   summary: string;
   icon: string;
-  keyword: string;
+  keyword: string[];
 }
 
 interface Fragrance {
@@ -28,18 +28,17 @@ interface Fragrance {
 }
 
 const Page = ({ searchParams }: ResultPageProps) => {
-  const parseAndStoreData = (params: { [key: string]: string | undefined }) => {
+  const parseAndStoreData = (params: { [key: string]: any }) => {
     const Families: Family[] = [];
     const Fragrance: Fragrance[] = [];
     const familySet = new Set();
     const fragranceSet = new Set();
-
     const addFamilyData = (index: string) => {
       const familyKorName = params[`familyKorName[${index}]`] || '';
       const familyEngName = params[`familyEngName[${index}]`] || '';
       const summary = params[`summary[${index}]`] || '';
       const icon = params[`icon[${index}]`] || '';
-      const keyword = params[`keyword[${index}]`] || '';
+      const keyword = params[`keyword[${index}]`] || [];
 
       if (familyKorName && !familySet.has(familyKorName)) {
         familySet.add(familyKorName);

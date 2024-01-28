@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Slider from '@/components/matchingtest/Slider';
 import Vibe from '@/components/matchingtest/Vibe';
 import Individuality from '@/components/matchingtest/Individuality';
@@ -8,6 +8,8 @@ import Main from '@/components/matchingtest/Main';
 import Persistence from '@/components/matchingtest/Persistence';
 import Season from '@/components/matchingtest/Season';
 import SwiperHeader from '@/components/matchingtest/SwiperHeader';
+import Loading from '@/components/matchingtest/Loading';
+import { useRouter } from 'next/navigation';
 
 interface Family {
   familyKorName: string;
@@ -34,6 +36,9 @@ interface SelectionsState {
 }
 
 const Page = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isDone, setIsDone] = useState<boolean>(false);
+  const [queryString, setQueryString] = useState<string>('');
   const [selections, setSelections] = useState<SelectionsState>({
     persistence: [],
     season: [],
@@ -41,6 +46,8 @@ const Page = () => {
     vibe: [],
     individuality: [],
   });
+  const router = useRouter();
+  const queryParams = new URLSearchParams();
 
   const updateSelections = (
     category: keyof SelectionsState,
@@ -70,8 +77,6 @@ const Page = () => {
 
       const responseData = await res.json();
 
-      const queryParams = new URLSearchParams();
-
       responseData.families.forEach((family: Family, familyIndex: number) => {
         Object.entries(family).forEach(([key, value]) => {
           if (Array.isArray(value)) {
@@ -93,7 +98,9 @@ const Page = () => {
 
       queryParams.append(`style1`, selections.vibe[0]);
       queryParams.append(`style2`, selections.vibe[1]);
-      window.location.replace(`/loading/?${queryParams}`);
+      // window.location.replace(`/loading/?${queryParams}`);
+      setQueryString(queryParams.toString());
+      setIsLoading(true);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error('Error sending data:', error);
@@ -153,7 +160,15 @@ const Page = () => {
     },
   ];
   const swiperRef = useRef(null);
-  return (
+
+  useEffect(() => {
+    if (isDone) router.push(`/find-taste/result?${queryString}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isDone]);
+
+  return isLoading ? (
+    <Loading setIsDone={setIsDone} />
+  ) : (
     <div>
       <div>
         <SwiperHeader swiperRef={swiperRef} />
