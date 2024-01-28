@@ -32,7 +32,10 @@ const page = async ({ searchParams }: MyPageProps) => {
           <h1 className="h0 mr-1">
             안녕하세요, {searchParams.nickname || user.nickname}님
           </h1>
-          <Link href="/mypage/username?init=false" className="">
+          <Link
+            href={`/mypage/username?init=false&nickname=${user.nickname}`}
+            className=""
+          >
             <PencilIcon />
           </Link>
         </div>

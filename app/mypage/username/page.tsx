@@ -9,8 +9,9 @@ const UsernameSettingPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const isInit = searchParams.get('init') === 'true';
+  const currentNickname = searchParams.get('nickname');
 
-  const [isUsernameError, setIsUsernameError] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
   const [isDoneAvailable, setIsDoneAvailable] = useState<boolean>(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -18,20 +19,24 @@ const UsernameSettingPage = () => {
     const username = event.currentTarget.username.value;
 
     if (/^([a-zA-Z가-힣]){1,8}$/.test(username)) {
-      setIsUsernameError(false);
+      setErrorMessage('');
       const res = await fetch('/api/set-username', {
         method: 'PUT',
-        body: JSON.stringify({ username }),
+        body: JSON.stringify({ username, currentNickname }),
         cache: 'no-cache',
       });
       if (res.ok) {
         if (isInit) router.push('/welcome');
         else router.push(`/mypage?nickname=${username}`);
+      } else if (res.status === 410) {
+        setErrorMessage('현재 닉네임과 동일합니다');
+      } else if (res.status === 409) {
+        setErrorMessage('중복된 닉네임 입니다');
       } else {
-        // 닉네임 설정 오류 대응 추가 예정
+        setErrorMessage('네트워크 연결이 불안정합니다');
       }
     } else {
-      setIsUsernameError(true);
+      setErrorMessage('공백 및 특수문자 제외 8글자 이내만 가능합니다');
       setIsDoneAvailable(false);
     }
   };
@@ -53,21 +58,21 @@ const UsernameSettingPage = () => {
         <input
           type="text"
           className={`${
-            isUsernameError ? 'border-b-[1.5px] border-acodeerror' : ''
+            errorMessage ? 'border-b-[1.5px] border-acodeerror' : ''
           } body2 font-medium mx-4 h-10 bg-acodegray-50 p-2.5 box-border text-acodeblack placeholder:text-acodegray-300 rounded-sm transition ease-in-out`}
           placeholder="특수문자 제외 한글 또는 영문 8글자 이내"
           name="username"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setIsUsernameError(false);
+            setErrorMessage('');
             if (e.target.value === '') setIsDoneAvailable(false);
             else setIsDoneAvailable(true);
           }}
         />
         <div className="mt-[7px] mb-[13px] mx-4 h-6">
-          {isUsernameError ? (
+          {errorMessage ? (
             <span className="caption1 flex items-center text-acodeerror font-medium animate-vibration">
               <WarningIcon className="mr-[5px]" />
-              공백 및 특수문자 제외 8글자 이내만 가능합니다
+              {errorMessage}
             </span>
           ) : null}
         </div>

@@ -9,9 +9,12 @@ const EXP_LIMIT = 1000 * 60 * 60 * 24;
 
 export const POST = async (request: Request) => {
   const body = await request.json();
+  const isDev = process.env.NODE_ENV === 'development';
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL}/oauth2/${body.provider}?code=${body.code}`,
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/oauth2/${body.provider}${
+      isDev ? '/developer' : ''
+    }?code=${body.code}`,
     {
       cache: 'no-cache',
     },

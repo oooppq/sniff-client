@@ -34,7 +34,7 @@ const SimilarPerfume = async ({ id }: SimilarProps) => {
 
   return (
     <div className="">
-      <div className="text-acodeblack h2 mb-5 mx-4">이런향수 어때요?</div>
+      <div className="text-acodeblack h2 mb-5 mx-4">이런 향수는 어때요?</div>
       <div className="flex px-4 overflow-auto gap-x-[14px]">
         {perfumes.map((perfume: Fragrance, index: number) => (
           <Link
