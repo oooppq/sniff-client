@@ -9,7 +9,7 @@ const BigLinkButton = ({ to, children, buttonStyle }: BigLinkButtonProps) => {
   return (
     <Link
       href={to}
-      className={`${buttonStyle} rounded-lg h-[56px] w-[343px] inline-flex items-center justify-center`}
+      className={`${buttonStyle} rounded h-[56px] w-[343px] inline-flex items-center justify-center`}
     >
       {children}
     </Link>
