@@ -17,18 +17,15 @@ const UserWishList = ({ initialWishData }: UserWishListProps) => {
   const { ref, inView } = useInView();
 
   useEffect(() => {
-    if (inView && page < initialWishData.totalPages) {
+    if (userInfo && inView && page < initialWishData.totalPages) {
       (async () => {
         const nextPage = page + 1;
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_SERVER_URL}/mypage/scrap?page=${nextPage}`,
-          {
-            cache: `no-cache`,
-            headers: {
-              Authorization: `Bearer ${userInfo?.jwt}`,
-            },
+        const response = await fetch(`/auth/mypage/scrap?page=${nextPage}`, {
+          cache: `no-cache`,
+          headers: {
+            Authorization: `Bearer ${userInfo?.jwt}`,
           },
-        );
+        });
         if (response.ok) {
           const data: TWishData = await response.json();
           setPage(nextPage);
@@ -37,7 +34,7 @@ const UserWishList = ({ initialWishData }: UserWishListProps) => {
       })();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inView]);
+  }, [inView, userInfo]);
 
   return (
     <ul className="mt-[70px] mx-4">
