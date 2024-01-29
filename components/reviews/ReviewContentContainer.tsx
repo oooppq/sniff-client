@@ -21,19 +21,6 @@ import {
 import { useRouter } from 'next/navigation';
 import { CompressImage } from '@/utils/compression';
 
-export async function getPresignedUrl(name: string) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL}/review/image/${name}`,
-  );
-
-  if (!response.ok) {
-    return null;
-  }
-
-  const data = await response.text();
-  return data;
-}
-
 const ReviewContentContainer = ({ id }: { id: string }) => {
   const [starRating, setStarRating] = useState<number>(0);
   const [oneLineComment, setOneLineComment] = useState<string>('');
@@ -48,7 +35,20 @@ const ReviewContentContainer = ({ id }: { id: string }) => {
     useState<boolean>(false);
   const [keyWordReviewError, setKeyWordReviewError] = useState<boolean>(false);
   const router = useRouter();
+  const userInfo = useSession();
 
+  async function getPresignedUrl(name: string) {
+    const response = await fetch(`/auth/review/image/${name}`, {
+      headers: { Authorization: `Bearer ${userInfo?.jwt}` },
+    });
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const data = await response.text();
+    return data;
+  }
   const handleModalReturn = (value: string[]) => {
     setModalValue(value);
   };
@@ -134,6 +134,14 @@ const ReviewContentContainer = ({ id }: { id: string }) => {
     const headers = new Headers();
     headers.set('AUTHORIZATION', token!);
 
+    // const res = await fetch(`/auth/review/${id}`, {
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     AUTHORIZATION: `Bearer ${userInfo?.jwt}`,
+    //   },
+    //   method: 'POST',
+    //   body: JSON.stringify({ payload }),
+    // });
     const res = await fetch(`/api/reviewpage/${id}`, {
       method: 'POST',
       body: JSON.stringify({ payload }),
