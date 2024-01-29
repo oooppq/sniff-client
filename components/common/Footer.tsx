@@ -27,13 +27,18 @@ const Footer = () => {
         <span className="">안여진</span>
 
         <span className="">이메일</span>
-        <span className="">sniff.a.code@gmail.com</span>
+        <Link href="mailto:sniff.a.code@gmail.com" className="">
+          sniff.a.code@gmail.com
+        </Link>
 
-        <span className="">사업자등록번호</span>
-        <span className="">551-86-02437</span>
-
-        <span className="">주소</span>
-        <span className="">서울특별시 성동구 연무장5가길 25(성수동 2가)</span>
+        <span className="">인스타그램</span>
+        <Link
+          href="https://www.instagram.com/acode_officiel?igsh=MTUyeWdrenoycWs3Nw=="
+          className=""
+          target="_blank"
+        >
+          @acode_official
+        </Link>
       </div>
       <p className="text-[10px] font-medium text-acodegray-400 leading-[15px] mb-10">
         &copy; ACODE. All rights reserved.

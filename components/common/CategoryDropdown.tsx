@@ -67,7 +67,7 @@ const CategoryDropdown = () => {
 
           <button
             type="button"
-            className={`mt-[28px] h2 text-acodewhite w-full h-14 transition ${
+            className={`rounded mt-[28px] h2 text-acodewhite w-full h-14 transition ${
               isChanged ? 'bg-acodeblack' : 'bg-acodegray-300'
             }`}
             disabled={!isChanged}

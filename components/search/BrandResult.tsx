@@ -27,10 +27,10 @@ const BrandResult = ({ brands, count }: BrandResultProps) => {
             className="mr-[10px] rounded-s-full"
           />
           <p className="eng text-[16px] font-semibold leading-[16px] tracking-[-0.16px] mr-auto">
-            {brand.korName}
+            {brand.brandName}
           </p>
           <Link
-            href={`/brands/${encodeURIComponent(brand.korName)}`}
+            href={`/brands/${encodeURIComponent(brand.brandName)}`}
             className="flex text-[12px] font-medium text-acodegray-400 leading-[18px] tracking-[-0.3px] items-center"
           >
             더 알아보기

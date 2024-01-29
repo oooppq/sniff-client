@@ -30,17 +30,15 @@ const UserReviewItem = ({ review }: UserReviewItemProps) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const handleClickDeleteButton = async () => {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/review/${review.reviewId}`,
-      {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${userInfo?.jwt}`,
-        },
+    const res = await fetch(`/auth/review/review/${review.reviewId}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${userInfo?.jwt}`,
       },
-    );
+    });
     if (res.ok) {
       setIsModalOpen(false);
+      window.location.reload();
     }
   };
 

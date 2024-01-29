@@ -32,7 +32,7 @@ const SearchBar = ({ initialQuery }: SearchBarProps) => {
       </button>
       <form
         action=""
-        className="flex bg-acodegray-50 flex-1 h-10 px-[11px] items-center"
+        className="flex bg-acodegray-50 flex-1 h-10 px-[11px] items-center rounded-sm"
         onSubmit={handleSubmit}
       >
         <input

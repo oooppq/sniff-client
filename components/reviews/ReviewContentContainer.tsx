@@ -133,15 +133,6 @@ const ReviewContentContainer = ({ id }: { id: string }) => {
 
     const headers = new Headers();
     headers.set('AUTHORIZATION', token!);
-
-    // const res = await fetch(`/auth/review/${id}`, {
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     AUTHORIZATION: `Bearer ${userInfo?.jwt}`,
-    //   },
-    //   method: 'POST',
-    //   body: JSON.stringify({ payload }),
-    // });
     const res = await fetch(`/api/reviewpage/${id}`, {
       method: 'POST',
       body: JSON.stringify({ payload }),

@@ -24,7 +24,7 @@ export interface TPerfume {
 
 export interface TBrand {
   brandId: number;
-  korName: string;
+  brandName: string;
   roundImg: string | null;
 }
 
