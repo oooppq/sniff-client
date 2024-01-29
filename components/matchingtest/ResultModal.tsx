@@ -25,6 +25,13 @@ const ResultModal = ({ onClose }: ResultModalProps) => {
     };
   }, [showAlert]);
 
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
   const copyToClipboardFallback = (text: string) => {
     const textArea = document.createElement('textarea');
     textArea.value = text;
@@ -61,7 +68,7 @@ const ResultModal = ({ onClose }: ResultModalProps) => {
   };
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+      className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
       onClick={onClose}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -73,7 +80,7 @@ const ResultModal = ({ onClose }: ResultModalProps) => {
       aria-label="Close modal"
     >
       <div
-        className="bg-white p-6 w-[321px] h-[189px] rounded-lg shadow-lg"
+        className="bg-white p-6 w-[321px] h-[189px] rounded"
         onClick={(e) => e.stopPropagation()}
         onKeyDown={() => {}}
         role="none"

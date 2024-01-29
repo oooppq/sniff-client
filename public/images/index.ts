@@ -89,3 +89,16 @@ export { default as Klogo} from './klogo.svg';
 export { default as LinkLogo} from './linklogo.svg';
 export {default as AcodeLogoSmallBlack} from './AcodeLogobaby.svg';
 export {default as RealArrow} from './realArrow.svg';
+
+
+export { default as WoodyGray} from './Woody-gray.png';
+export { default as EarthyGray} from './Earthy-gray.png';
+export { default as FloralGray} from './Floral-gray.png';
+export { default as GreenGray} from './Green-gray.png';
+export { default as CitrusGray} from './Citrus-gray.png';
+export { default as ChypreGray} from './Chypre-gray.png';
+export { default as AldehydeGray} from './Aldehyde-gray.png';
+export { default as AromaticGray} from './Aromatic-gray.png';
+export { default as LeatherGray} from './Leather-gray.png';
+export { default as SpicyGray} from './Spicy-gray.png';
+export { default as FruityGray} from './Fruity-gray.png';

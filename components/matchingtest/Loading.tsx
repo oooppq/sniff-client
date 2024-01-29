@@ -40,16 +40,16 @@ const Loading = ({ setIsDone }: LoadingPageProps) => {
   }, [currentIconIndex, lastIconIndex]);
 
   return (
-    <div className="mx-[17px]">
+    <div>
       <Header />
-      <div className="h0 mt-[51px]">
+      <div className="h0 mt-[54px] mx-4">
         <div>당신에게 딱 어울리는 향을 </div>
         <div>추출하고 있어요!</div>
       </div>
       <div className="flex justify-center items-center mt-[126px] mb-[110px]">
         {icons[currentIconIndex]}
       </div>
-      <div className="border border-acodegray-100 bg-acodegray-100 flex justify-center items-center h-[106px]">
+      <div className="border text-[#909090] text-2xl border-acodegray-100 bg-acodegray-100 flex justify-center items-center h-[106px]">
         광고
       </div>
     </div>

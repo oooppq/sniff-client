@@ -2,7 +2,7 @@
 
 import UserStyle from '@/components/matchingtest/UserStyle';
 import Similar from '@/components/matchingtest/Similar';
-import HomeNav from '@/components/home/HomeNav';
+import ResultNav from '@/components/matchingtest/ResultNav';
 import Link from 'next/link';
 import { useState } from 'react';
 import ResultModal from '@/components/matchingtest/ResultModal';
@@ -89,36 +89,28 @@ const Page = ({ searchParams }: ResultPageProps) => {
   };
   return (
     <div>
-      <div>
-        <HomeNav />
-      </div>
-      <div className="mt-16">
-        <UserStyle families={Families} />
-      </div>
-      <div>
-        <Similar fragrance={Fragrance} style={style} />
-      </div>
-
-      <div className="flex flex-row mt-20 justify-center py-3 px-4">
-        <div className="flex mr-2.5">
-          <button
-            type="button"
-            className="rounded-lg bg-acodegray-50 text-black w-[166px] h-[56px] inline-flex items-center justify-center"
-            onClick={handleShareClick}
-          >
-            공유하기
-          </button>
-        </div>
+      <ResultNav />
+      <UserStyle families={Families} />
+      <Similar fragrance={Fragrance} style={style} />
+      <div className="flex flex-row mt-[79px] justify-center mx-4 gap-x-[11px] pb-[28px]">
+        <button
+          type="button"
+          className="h2 rounded bg-acodegray-50 text-black w-[166px] h-[56px] inline-flex items-center justify-center"
+          onClick={handleShareClick}
+        >
+          공유하기
+        </button>
 
         <Link href="/">
           <button
             type="button"
-            className="rounded-lg bg-black text-white w-[166px] h-[56px] inline-flex items-center justify-center"
+            className="h2 rounded bg-black text-white w-[166px] h-[56px] inline-flex items-center justify-center"
           >
             홈으로
           </button>
         </Link>
       </div>
+
       {isModalOpen && <ResultModal onClose={() => setModalOpen(false)} />}
     </div>
   );

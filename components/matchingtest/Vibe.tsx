@@ -53,14 +53,15 @@ const Vibe = ({ updateSelection, handleSubmit }: VibeProps) => {
     { id: '가벼운', label: '가벼운' },
   ];
   return (
-    <div className="mx-4 mt-4">
+    <div className="mx-4 mt-[25px]">
       <div className="flex flex-col">
         <div className="h0 mb-[49px]">
-          <div>향수로 어떤 분위기를</div>
-          <div>내고 싶으신가요?</div>
+          향수로 어떤 분위기를
+          <br />
+          내고 싶으신가요?
         </div>
-        <div className="text-gray-500 body2 mb-3">*2개 선택 필수</div>
-        <div className="flex flex-wrap h1 gap-x-3 gap-y-2">
+        <div className="text-gray-300 body2 mb-3">*2개 선택 필수</div>
+        <div className="flex flex-wrap h1 gap-x-3 gap-y-[18px]">
           {vibeOptions.map((option) => (
             <div key={option.id} className="">
               <input
@@ -73,14 +74,14 @@ const Vibe = ({ updateSelection, handleSubmit }: VibeProps) => {
               />
               <label
                 htmlFor={`vibe-option-${option.id}`}
-                className={`block w-full text-center py-2 px-4 ${
+                className={`h-[34px] w-full flex items-center justify-center px-[14px] rounded-sm transition ${
                   selectedVibes.includes(option.id)
                     ? 'bg-acodeblack border-acodegray-100 '
                     : 'bg-acodegray-50 border-acodegray-100'
                 } cursor-pointer flex flex-col items-center justify-center`}
               >
                 <div
-                  className={`${
+                  className={`transition ${
                     selectedVibes.includes(option.id)
                       ? 'text-white'
                       : 'text-acodeblack'
@@ -96,7 +97,7 @@ const Vibe = ({ updateSelection, handleSubmit }: VibeProps) => {
           <button
             type="button"
             onClick={handleSubmit}
-            className={`px-4 rounded-lg h-[56px] w-full inline-flex items-center justify-center ${
+            className={`h2 px-4 rounded h-[56px] w-full inline-flex items-center justify-center transition ${
               selectedVibes.length === 2
                 ? 'bg-black text-white'
                 : 'bg-acodegray-300 text-white'

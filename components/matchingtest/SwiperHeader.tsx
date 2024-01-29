@@ -18,10 +18,10 @@ const SwiperHeader = ({ swiperRef }: SliderProps) => {
     }
   };
   return (
-    <div>
-      <div className="py-2.5 px-2.5">
-        <PreviousIcon onClick={handlePrev} />
-      </div>
+    <div className="flex items-center w-full max-w-[430px] h-[54px] pt-[13px] pl-[10px] pr-[13px] pb-[11px] bg-acodewhite z-30">
+      <button type="button" className="mr-auto" onClick={handlePrev}>
+        <PreviousIcon className="" />
+      </button>
     </div>
   );
 };

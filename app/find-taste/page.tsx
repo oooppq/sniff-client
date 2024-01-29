@@ -5,11 +5,11 @@ import More from '@/components/matchingtest/More';
 
 const Page = () => {
   return (
-    <div className="mx-3">
+    <>
       <Header />
       <Test />
       <More />
-    </div>
+    </>
   );
 };
 

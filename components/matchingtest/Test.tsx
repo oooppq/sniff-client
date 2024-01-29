@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Test = () => {
   return (
-    <div className="w-full h-[500px] bg-black rounded-sm">
+    <div className="mt-[56px] mr-[16px] ml-[16px] max-w-[430px] h-[500px] bg-black rounded-lg relative">
       <div className="ml-7 pt-9">
         <div className="mb-[25px]">
           <AcodeLogoSmallBlack />
@@ -13,10 +13,12 @@ const Test = () => {
         </div>
       </div>
       <Link href="/find-taste/test">
-        <div className="text-white place-items-end mt-[272px] ml-[200px] ">
-          <div className="flex flex-col h2">
-            테스트시작
-            <RealArrow />
+        <div className="text-white absolute bottom-6 right-6">
+          <div className="flex items-center h2">
+            <div className="flex flex-col">
+              <span>테스트시작</span>
+              <RealArrow />
+            </div>
           </div>
         </div>
       </Link>

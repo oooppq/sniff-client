@@ -169,18 +169,14 @@ const Page = () => {
   return isLoading ? (
     <Loading setIsDone={setIsDone} />
   ) : (
-    <div>
-      <div>
-        <SwiperHeader swiperRef={swiperRef} />
-      </div>
-      <div>
-        <Slider
-          slides={slides.map((slide) => slide.component)}
-          keys={slides.map((slide) => slide.name)}
-          swiperRef={swiperRef}
-        />
-      </div>
-    </div>
+    <>
+      <SwiperHeader swiperRef={swiperRef} />
+      <Slider
+        slides={slides.map((slide) => slide.component)}
+        keys={slides.map((slide) => slide.name)}
+        swiperRef={swiperRef}
+      />
+    </>
   );
 };
 
