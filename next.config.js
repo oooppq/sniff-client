@@ -1,5 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: '/auth/:path*',
+        destination: `https://abcode.shop/api/v1/:path*`,
+      },
+    ];
+  },
   experimental: {
     serverActions: true,
   },

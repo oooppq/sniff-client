@@ -9,13 +9,10 @@ export const useWish = (id: number, initialState: boolean) => {
     e.preventDefault();
     if (!userInfo) return;
 
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/fragrance/${id}/scrap`,
-      {
-        method: 'POST',
-        headers: { Authorization: `Bearer ${userInfo.jwt}` },
-      },
-    );
+    const res = await fetch(`/auth/fragrance/${id}/scrap`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${userInfo.jwt}` },
+    });
 
     if (res.ok) setIsWishOn(!isWishOn);
   };

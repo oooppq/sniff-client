@@ -20,15 +20,12 @@ const UserWishList = ({ initialWishData }: UserWishListProps) => {
     if (inView && page < initialWishData.totalPages) {
       (async () => {
         const nextPage = page + 1;
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_SERVER_URL}/mypage/scrap?page=${nextPage}`,
-          {
-            cache: `no-cache`,
-            headers: {
-              Authorization: `Bearer ${userInfo?.jwt}`,
-            },
+        const response = await fetch(`/auth/mypage/scrap?page=${nextPage}`, {
+          cache: `no-cache`,
+          headers: {
+            Authorization: `Bearer ${userInfo?.jwt}`,
           },
-        );
+        });
         if (response.ok) {
           const data: TWishData = await response.json();
           setPage(nextPage);

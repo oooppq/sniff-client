@@ -20,15 +20,12 @@ const UserReviewList = ({ initialReviewData }: UserReviewListProps) => {
     if (userInfo && inView && page < initialReviewData.totalPages) {
       (async () => {
         const nextPage = page + 1;
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_SERVER_URL}/mypage/review?page=${nextPage}`,
-          {
-            cache: `no-cache`,
-            headers: {
-              AUTHORIZATION: `Bearer ${userInfo.jwt}`,
-            },
+        const response = await fetch(`/auth/mypage/review?page=${nextPage}`, {
+          cache: `no-cache`,
+          headers: {
+            AUTHORIZATION: `Bearer ${userInfo.jwt}`,
           },
-        );
+        });
         if (response.ok) {
           const data: TReviewData = await response.json();
           setPage(nextPage);
