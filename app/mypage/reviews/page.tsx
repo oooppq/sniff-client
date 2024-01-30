@@ -17,7 +17,12 @@ const page = async () => {
       },
     },
   );
-  if (!res.ok) return null;
+  if (!res.ok) {
+    if (res.status === 401) {
+      redirect('/login?invalid=true');
+    }
+    return null;
+  }
   const reviewData: TReviewData = await res.json();
 
   return (

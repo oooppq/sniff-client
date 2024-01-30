@@ -21,7 +21,12 @@ const page = async ({ searchParams }: MyPageProps) => {
     },
   });
 
-  if (!res.ok) return null;
+  if (!res.ok) {
+    if (res.status === 401) {
+      redirect('/login?invalid=true');
+    }
+    return null;
+  }
   const user = await res.json();
 
   return (

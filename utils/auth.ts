@@ -1,11 +1,12 @@
 import { cookies } from 'next/headers';
+import CryptoJS from 'crypto-js';
 
 export const getSession = () => {
   const cookieStore = cookies();
-  const jwt = cookieStore.get('jwt')?.value;
+  const encodedJWT = cookieStore.get('jwt')?.value;
   const exp = Number(cookieStore.get('exp')?.value);
 
-  if (!jwt || !exp) {
+  if (!encodedJWT || !exp) {
     return null;
   }
 
@@ -13,7 +14,14 @@ export const getSession = () => {
     return null;
   }
 
-  return { jwt, exp };
+  const bytes = CryptoJS.AES.decrypt(
+    encodedJWT,
+    process.env.NEXT_PUBLIC_SECRET_KEY!,
+  );
+
+  const decodedJWT = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+
+  return { jwt: decodedJWT, exp };
 };
 
 export const getNickname = () => {

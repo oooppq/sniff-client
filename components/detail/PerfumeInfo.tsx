@@ -22,15 +22,15 @@ const PerfumeInfo = ({
 }: PerfumeInfoProps) => {
   return (
     <div className="mt-4">
-      <div className="body2 mx-4 text-acodegray-300 max-w-md mb-4">
+      <div className="body2 mx-4 text-acodegray-300 max-w-md mb-4 flex items-center">
         {brandName}
+        <SmallCircleIcon className="fill-acodegray-300 ml-[6px] mr-1" />
+        <span className="tracking-normal">{concentration}</span>
       </div>
       <div className="flex flex-row justify-between h-16">
         <div className="flex flex-col mb-1">
           <div className="flex items-center gap-[10px] ml-4">
             <div className="h1 text-acodeblack">{fragranceName}</div>
-            <SmallCircleIcon className="fill-acodegray-500" />
-            <div className="h2 text-acodegray-500">{concentration}</div>
           </div>
           {capacityList.length ? (
             <DropdownButton options={capacityList} />
@@ -42,9 +42,9 @@ const PerfumeInfo = ({
               key={`${family.familyIcon}${family.familyName}`}
               src={family.familyIcon || '/'}
               alt="family badge"
-              width={44}
-              height={56}
-              className="w-11 h-14"
+              width={52}
+              height={68}
+              className="w-[52px] h-[68px]"
             />
           ))}
         </div>

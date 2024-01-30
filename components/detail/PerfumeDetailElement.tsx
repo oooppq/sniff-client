@@ -31,7 +31,7 @@ const PerfumeDetailElement = ({
                 category,
               },
             }}
-            className={`text-left text-[18px] font-bold leading-[18px] tracking-[-0.18px] h-[25px] px-[2px] block ${
+            className={`text-left h2 leading-[18px] tracking-[-0.18px] h-[25px] px-[2px] block ${
               selectedTab === category
                 ? 'text-acodeblack border-b-2 border-acodeblack'
                 : 'text-acodegray-200'

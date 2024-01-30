@@ -6,6 +6,7 @@ import { EmptyStarIcon, FullStarIcon, SmallCircleIcon } from '@/public/images';
 import { TUserReview } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 interface UserReviewItemProps {
@@ -28,6 +29,7 @@ export const rateStarHandler = (rating: number) => {
 const UserReviewItem = ({ review }: UserReviewItemProps) => {
   const userInfo = useSession();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const router = useRouter();
 
   const handleClickDeleteButton = async () => {
     const res = await fetch(`/auth/review/review/${review.reviewId}`, {
@@ -39,6 +41,11 @@ const UserReviewItem = ({ review }: UserReviewItemProps) => {
     if (res.ok) {
       setIsModalOpen(false);
       window.location.reload();
+    } else if (res.status === 401) {
+      fetch('/api/initialize', {
+        method: 'POST',
+      });
+      router.push('/login?invalid=true');
     }
   };
 

@@ -5,9 +5,9 @@ import { getSession } from './utils/auth';
 export function middleware(request: NextRequest) {
   const userInfo = getSession();
 
-  const { pathname } = request.nextUrl;
+  const { pathname, searchParams } = request.nextUrl;
 
-  if (pathname === '/login' && userInfo)
+  if (pathname === '/login' && !searchParams.get('invalid') && userInfo)
     return NextResponse.redirect(new URL('/', request.url));
   if (
     (pathname === '/welcome' ||

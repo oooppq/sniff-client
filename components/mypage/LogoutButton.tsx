@@ -21,7 +21,12 @@ const LogoutButton = () => {
             if (res.ok) {
               router.refresh();
               router.replace('/');
+            } else if (res.status === 401) {
+              fetch('/api/initialize', {
+                method: 'POST',
+              });
             }
+            router.push('/login?invalid=true');
           }}
           title="로그아웃"
           height="h-[176px]"

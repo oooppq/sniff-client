@@ -3,6 +3,7 @@
 import WishItem from '@/components/mypage/WishItem';
 import { useSession } from '@/hooks/useSession';
 import { TWish, TWishData } from '@/types';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
@@ -15,6 +16,7 @@ const UserWishList = ({ initialWishData }: UserWishListProps) => {
   const [wishes, setWishes] = useState<TWish[]>(initialWishData.data);
   const [page, setPage] = useState<number>(1);
   const { ref, inView } = useInView();
+  const router = useRouter();
 
   useEffect(() => {
     if (userInfo && inView && page < initialWishData.totalPages) {
@@ -30,6 +32,11 @@ const UserWishList = ({ initialWishData }: UserWishListProps) => {
           const data: TWishData = await response.json();
           setPage(nextPage);
           setWishes([...wishes, ...data.data]);
+        } else if (response.status === 401) {
+          fetch('/api/initialize', {
+            method: 'POST',
+          });
+          router.push('/login?invalid=true');
         }
       })();
     }

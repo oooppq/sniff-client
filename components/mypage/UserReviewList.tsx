@@ -5,6 +5,7 @@ import { TUserReview, TReviewData } from '@/types';
 import UserReviewItem from '@/components/mypage/UserReviewItem';
 import { useInView } from 'react-intersection-observer';
 import { useSession } from '@/hooks/useSession';
+import { useRouter } from 'next/navigation';
 
 interface UserReviewListProps {
   initialReviewData: TReviewData;
@@ -15,6 +16,7 @@ const UserReviewList = ({ initialReviewData }: UserReviewListProps) => {
   const [reviews, setReviews] = useState<TUserReview[]>(initialReviewData.data);
   const [page, setPage] = useState<number>(1);
   const { ref, inView } = useInView();
+  const router = useRouter();
 
   useEffect(() => {
     if (userInfo && inView && page < initialReviewData.totalPages) {
@@ -30,6 +32,11 @@ const UserReviewList = ({ initialReviewData }: UserReviewListProps) => {
           const data: TReviewData = await response.json();
           setPage(nextPage);
           setReviews([...reviews, ...data.data]);
+        } else if (response.status === 401) {
+          fetch('/api/initialize', {
+            method: 'POST',
+          });
+          router.push('/login?invalid=true');
         }
       })();
     }

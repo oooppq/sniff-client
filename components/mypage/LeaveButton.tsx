@@ -19,6 +19,12 @@ const LeaveButton = () => {
               cache: 'no-cache',
             });
             if (res.ok) router.push('/');
+            else if (res.status === 401) {
+              fetch('/api/initialize', {
+                method: 'POST',
+              });
+            }
+            router.push('/login?invalid=true');
           }}
           title="정말 탈퇴하시겠어요?"
           height="h-[210px]"

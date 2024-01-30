@@ -18,8 +18,13 @@ export const useWish = (id: number, initialState: boolean) => {
       method: 'POST',
       headers: { Authorization: `Bearer ${userInfo.jwt}` },
     });
-
     if (res.ok) setIsWishOn(!isWishOn);
+    else if (res.status === 401) {
+      await fetch(`/api/initialize`, {
+        method: 'POST',
+      });
+      router.push('/login');
+    }
   };
 
   return { isWishOn, handleClickWish };

@@ -1,3 +1,4 @@
+import { FAILED, NOT_AUTHORIZED } from '@/constants/statusCodes';
 import { getSession } from '@/utils/auth';
 
 export async function POST(
@@ -16,35 +17,27 @@ export async function POST(
   }
 
   const { id } = params;
-  try {
-    const body = await req.json();
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/review/${id}`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          AUTHORIZATION: `Bearer ${userInfo.jwt}`,
-        },
-        method: 'POST',
-        body: JSON.stringify(body.payload),
+  const body = await req.json();
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/review/${id}`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        AUTHORIZATION: `Bearer ${userInfo.jwt}`,
       },
-    );
+      method: 'POST',
+      body: JSON.stringify(body.payload),
+    },
+  );
 
-    if (!res.ok) {
-      throw new Error(`Server responded with an error: ${res.status}`);
-    }
+  if (res.ok) {
     return new Response(JSON.stringify({ payload: body.payload }), {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
       },
     });
-  } catch (error) {
-    return new Response(JSON.stringify({ message: 'An error occurred' }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
   }
+  if (res.status === 401) return new Response(NOT_AUTHORIZED, { status: 401 });
+  return new Response(FAILED, { status: 400 });
 }

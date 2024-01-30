@@ -72,7 +72,7 @@ export async function PUT(request: NextRequest) {
       });
     }
     return new Response(FAILED, {
-      status: 400,
+      status: res.status,
     });
   }
 
@@ -82,6 +82,6 @@ export async function PUT(request: NextRequest) {
     });
 
   return new Response(FAILED, {
-    status: 400,
+    status: dupCheckRes.status,
   });
 }

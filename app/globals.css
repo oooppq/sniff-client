@@ -39,6 +39,13 @@
     line-height: 21px;
     letter-spacing: -0.35px;
   }
+  .body3{
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: -0.35px;
+  }
 
   .caption1 {
     font-size: 12px;

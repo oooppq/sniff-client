@@ -18,7 +18,6 @@ interface DetailPageProps {
 
 const page = async ({ params, searchParams }: DetailPageProps) => {
   const userInfo = getSession();
-
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/fragrance/${params.id}`,
     {
@@ -29,7 +28,12 @@ const page = async ({ params, searchParams }: DetailPageProps) => {
     },
   );
 
-  if (!res.ok) redirect('/');
+  if (!res.ok) {
+    if (res.status === 401) {
+      redirect('/login?invalid=true');
+    }
+    redirect('/');
+  }
 
   const {
     thumbnail,

@@ -5,11 +5,11 @@ import { cookies } from 'next/headers';
 export const POST = async () => {
   const userInfo = getSession();
 
-  if (!userInfo) {
-    cookies().delete('jwt');
-    cookies().delete('exp');
-    cookies().delete('nickname');
+  cookies().delete('jwt');
+  cookies().delete('exp');
+  cookies().delete('nickname');
 
+  if (!userInfo) {
     return new Response(FAILED, {
       status: 400,
     });
@@ -24,9 +24,6 @@ export const POST = async () => {
   });
 
   if (res.ok) {
-    cookies().delete('jwt');
-    cookies().delete('exp');
-    cookies().delete('nickname');
     return new Response(SUCCESS, {
       status: 200,
     });

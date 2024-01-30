@@ -32,6 +32,11 @@ const UsernameSettingPage = () => {
         setErrorMessage('현재 닉네임과 동일합니다');
       } else if (res.status === 409) {
         setErrorMessage('중복된 닉네임 입니다');
+      } else if (res.status === 401) {
+        await fetch(`/api/initialize`, {
+          method: 'POST',
+        });
+        router.push('/login?invalid=true');
       } else {
         setErrorMessage('네트워크 연결이 불안정합니다');
       }

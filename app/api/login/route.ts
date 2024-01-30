@@ -4,6 +4,7 @@ import {
   USERNAME_SETTING_REQUIRED,
 } from '@/constants/statusCodes';
 import { cookies } from 'next/headers';
+import CryptoJS from 'crypto-js';
 
 const EXP_LIMIT = 1000 * 60 * 60 * 24;
 
@@ -22,7 +23,13 @@ export const POST = async (request: Request) => {
 
   if (res.ok) {
     const jwt = await res.json();
-    cookies().set('jwt', jwt.accessToken, {
+
+    const encodedJWT = CryptoJS.AES.encrypt(
+      JSON.stringify(jwt.accessToken),
+      process.env.NEXT_PUBLIC_SECRET_KEY!,
+    ).toString();
+
+    cookies().set('jwt', encodedJWT, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',

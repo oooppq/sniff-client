@@ -34,20 +34,27 @@ const PerfumeDetail = async ({ isEasy, id }: PerfumeDetailProps) => {
   const key = isEasy ? 'acode' : 'ingredientName';
 
   const labels = isEasy
-    ? { top: '첫 향', middle: '메인향', base: '잔향' }
-    : { top: '탑', middle: '미들', base: '베이스' };
+    ? { top: '첫 향', middle: '메인향', base: '잔향', single: '싱글' }
+    : { top: '탑', middle: '미들', base: '베이스', single: '향' };
 
   return (
     <div>
       <div className="flex flex-col space-y-5 mx-4">
-        <EachNote
-          label={labels.top}
-          ingredients={data.topNote.map(
-            (ingredient: Ingredient) => ingredient[key],
-          )}
-        />
-        {data.single ? null : (
+        {data.single ? (
+          <EachNote
+            label={labels.single}
+            ingredients={data.topNote.map(
+              (ingredient: Ingredient) => ingredient[key],
+            )}
+          />
+        ) : (
           <>
+            <EachNote
+              label={labels.top}
+              ingredients={data.topNote.map(
+                (ingredient: Ingredient) => ingredient[key],
+              )}
+            />
             <EachNote
               label={labels.middle}
               ingredients={data.middleNote.map(

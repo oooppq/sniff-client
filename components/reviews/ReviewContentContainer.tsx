@@ -43,6 +43,12 @@ const ReviewContentContainer = ({ id }: { id: string }) => {
     });
 
     if (!response.ok) {
+      if (response.status === 401) {
+        fetch('/api/initialize', {
+          method: 'POST',
+        });
+      }
+      router.push('/login?invalid=true');
       return null;
     }
 
@@ -140,8 +146,15 @@ const ReviewContentContainer = ({ id }: { id: string }) => {
     });
 
     if (!res.ok) {
+      if (res.status === 401) {
+        fetch('/api/initialize', {
+          method: 'POST',
+        });
+      }
+      router.push('/login?invalid=true');
       return;
     }
+
     router.refresh();
     router.push(`/perfumes/${id}?category=review`);
   };
