@@ -19,7 +19,14 @@ export const getSession = () => {
     process.env.NEXT_PUBLIC_SECRET_KEY!,
   );
 
-  const decodedJWT = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+  let decodedJWT = '';
+  try {
+    decodedJWT = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+  } catch {
+    decodedJWT = '';
+  }
+
+  if (!decodedJWT) return null;
 
   return { jwt: decodedJWT, exp };
 };

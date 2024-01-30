@@ -16,7 +16,14 @@ export async function GET() {
     process.env.NEXT_PUBLIC_SECRET_KEY!,
   );
 
-  const decodedJWT = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+  let decodedJWT = '';
+  try {
+    decodedJWT = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+  } catch {
+    decodedJWT = '';
+  }
+
+  if (!decodedJWT) return NextResponse.json(null);
 
   if (exp < new Date().getTime()) {
     cookieStore.delete('jwt');
