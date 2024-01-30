@@ -31,7 +31,7 @@ const HereTobuy = async ({ id, brandName, fragranceName }: BuyProps) => {
       <div className="grid gap-y-3">
         {data.purchaseList.map(
           ({ link, image }: { link: string; image: string }) => (
-            <Link key={`${link}-${image}`} href={link}>
+            <Link key={`${link}-${image}`} href={link} target="_blank">
               <div className="flex items-center">
                 <Image
                   src={image}

@@ -37,7 +37,7 @@ const Footer = () => {
         <span className="">안여진</span>
 
         <span className="">이메일</span>
-        <Link href="mailto:sniff.a.code@gmail.com" className="">
+        <Link href="mailto:sniff.a.code@gmail.com" className="" target="_blank">
           sniff.a.code@gmail.com
         </Link>
 
