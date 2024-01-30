@@ -11,7 +11,7 @@ const ReviewHeader = async ({ id }: { id: string }) => {
     return null;
   }
 
-  const { korBrand, fragranceName, thumbnail, concentration } =
+  const { brandName, fragranceName, thumbnail, concentration } =
     await response.json();
 
   return (
@@ -26,7 +26,9 @@ const ReviewHeader = async ({ id }: { id: string }) => {
         />
       </div>
       <div className="flex flex-col">
-        <span className="text-acodegray-200 caption2 mb-[9px]">{korBrand}</span>
+        <span className="text-acodegray-200 caption2 mb-[9px]">
+          {brandName}
+        </span>
         <div className="flex items-center">
           <span className="text-acodeblack review-1">{fragranceName}</span>
           <SmallCircleIcon className="mx-[6px] fill-acodegray-700" />

@@ -33,7 +33,7 @@ const page = async ({ params, searchParams }: DetailPageProps) => {
 
   const {
     thumbnail,
-    korBrand,
+    brandName,
     fragranceName,
     concentration,
     familyList,
@@ -44,13 +44,13 @@ const page = async ({ params, searchParams }: DetailPageProps) => {
     scraped,
   } = await res.json();
 
-  const images = [thumbnail, image1, image2];
+  const images = [thumbnail, image1, image2].filter((image) => image);
   return (
     <section className="">
       <Navbar id={params.id} initialWishState={scraped} />
       <ImageSlider images={images} />
       <PerfumeInfo
-        korBrand={korBrand}
+        brandName={brandName}
         fragranceName={fragranceName}
         concentration={concentration}
         familyList={familyList}
@@ -62,7 +62,11 @@ const page = async ({ params, searchParams }: DetailPageProps) => {
       <hr className="my-11 border-t-[6px] border-[#FBFBFB]" />
       <SimilarPerfume id={params.id} />
       <hr className="my-11 mx-4 mborder-t-[1.5px] border-[#f7f7f7]" />
-      <HereTobuy id={params.id} />
+      <HereTobuy
+        id={params.id}
+        brandName={brandName}
+        fragranceName={fragranceName}
+      />
       <div className="flex justify-center item-center">
         <AddReview id={params.id} />
       </div>

@@ -1,9 +1,10 @@
 import Image from 'next/image';
-import testImg from '@/public/images/test.jpg';
 import Link from 'next/link';
 
 interface BuyProps {
   id: string;
+  brandName: string;
+  fragranceName: string;
 }
 
 export async function getPurchase(id: string) {
@@ -19,42 +20,44 @@ export async function getPurchase(id: string) {
   return data;
 }
 
-const HereTobuy = async ({ id }: BuyProps) => {
-  const data: { [key: string]: string } | null = await getPurchase(id);
+const HereTobuy = async ({ id, brandName, fragranceName }: BuyProps) => {
+  const data = await getPurchase(id);
 
   if (!data) return null;
 
-  return (
+  return data.purchaseList ? (
     <div className="mx-4 mb-[186px]">
       <div className="h2 mb-[30px]">여기서 구매할 수 있어요</div>
       <div className="grid gap-y-3">
-        {Object.values(data).map((url: string) => (
-          <Link key={url} href={url}>
-            <div className="flex items-center">
-              <Image
-                src={testImg}
-                alt="sinse"
-                width={80}
-                height={80}
-                objectFit="cover"
-                className="mr-[14px] w-20 h-20 rounded-sm"
-              />
+        {data.purchaseList.map(
+          ({ link, image }: { link: string; image: string }) => (
+            <Link key={`${link}-${image}`} href={link}>
+              <div className="flex items-center">
+                <Image
+                  src={image}
+                  alt="sinse"
+                  width={80}
+                  height={80}
+                  objectFit="cover"
+                  className="mr-[14px] w-20 h-20 rounded-sm"
+                />
 
-              <div className="flex flex-col">
-                <div className="body2 leading-[14px] font-medium mb-[14px]">
-                  S.I Village 신세계 시마을
-                </div>
-                <div className="body2 font-medium text-acodegray-400">
-                  S.I Village 신세계 시마을S.I Village <br />
-                  신세계 시마을
+                <div className="flex flex-col justify-center body2 font-medium">
+                  <div className="mb-[10px]">{fragranceName} 판매처</div>
+                  <div className="h-[21px] mb-[2px] text-acodegray-500">
+                    {brandName}
+                  </div>
+                  <div className="leading-[14px] tracking-[-0.35px] text-acodegray-700">
+                    {fragranceName}
+                  </div>
                 </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ),
+        )}
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default HereTobuy;

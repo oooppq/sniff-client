@@ -47,7 +47,7 @@ const Footer = () => {
           className=""
           target="_blank"
         >
-          @acode_official
+          @acode_officiel
         </Link>
       </div>
       <p className="text-[10px] font-medium text-acodegray-400 leading-[15px] mb-10">
