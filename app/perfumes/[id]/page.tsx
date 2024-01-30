@@ -50,7 +50,7 @@ const page = async ({ params, searchParams }: DetailPageProps) => {
 
   const images = [thumbnail, image1, image2].filter((image) => image);
   return (
-    <section className="">
+    <section className="mb-[186px]">
       <Navbar id={params.id} initialWishState={scraped} />
       <ImageSlider images={images} />
       <PerfumeInfo
@@ -65,7 +65,6 @@ const page = async ({ params, searchParams }: DetailPageProps) => {
       <PerfumeDetailList searchParams={searchParams} searchId={params} />
       <hr className="my-11 border-t-[6px] border-[#FBFBFB]" />
       <SimilarPerfume id={params.id} />
-      <hr className="my-11 mx-4 mborder-t-[1.5px] border-[#f7f7f7]" />
       <HereTobuy
         id={params.id}
         brandName={brandName}
