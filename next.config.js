@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-import withPlaiceholder from '@plaiceholder/next';
+// import withPlaiceholder from '@plaiceholder/next';
 
 const nextConfig = {
   async rewrites() {
@@ -32,4 +32,4 @@ const nextConfig = {
   },
 };
 
-export default withPlaiceholder(nextConfig);
+module.exports = nextConfig;

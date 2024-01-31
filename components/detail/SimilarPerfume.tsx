@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { getPlaiceholder } from 'plaiceholder';
+// import { getPlaiceholder } from 'plaiceholder';
 // import Slider from './Slider';
 
 interface SimilarProps {
@@ -32,16 +32,16 @@ const SimilarPerfume = async ({ id }: SimilarProps) => {
   if (!data) return null;
 
   const perfumes: Fragrance[] = data.similarFragranceList;
-  const blurImageUrls = await Promise.all(
-    perfumes.map(async (perfume) => {
-      const buffer = await fetch(perfume.thumbnail).then(async (pres) =>
-        Buffer.from(await pres.arrayBuffer()),
-      );
+  // const blurImageUrls = await Promise.all(
+  //   perfumes.map(async (perfume) => {
+  //     const buffer = await fetch(perfume.thumbnail).then(async (pres) =>
+  //       Buffer.from(await pres.arrayBuffer()),
+  //     );
 
-      const { base64 } = await getPlaiceholder(buffer);
-      return base64;
-    }),
-  );
+  //     const { base64 } = await getPlaiceholder(buffer);
+  //     return base64;
+  //   }),
+  // );
   return (
     <div className="">
       <div className="text-acodeblack h2 mb-5 mx-4">이런 향수는 어때요?</div>
@@ -53,8 +53,8 @@ const SimilarPerfume = async ({ id }: SimilarProps) => {
             className="relative w-[138px] h-[138px] shrink-0"
           >
             <Image
-              placeholder="blur"
-              blurDataURL={blurImageUrls[index]}
+              // placeholder="blur"
+              // blurDataURL={blurImageUrls[index]}
               src={perfume.thumbnail}
               alt={`Test Perfume ${index + 1}`}
               fill
