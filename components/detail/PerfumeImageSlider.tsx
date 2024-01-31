@@ -9,9 +9,10 @@ import 'swiper/css/pagination';
 
 interface ImageSliderProps {
   images: string[];
+  blurImageUrls: string[];
 }
 
-const ImageSlider = ({ images }: ImageSliderProps) => {
+const ImageSlider = ({ images, blurImageUrls }: ImageSliderProps) => {
   return (
     <Swiper
       pagination={{ type: 'bullets' }}
@@ -22,10 +23,12 @@ const ImageSlider = ({ images }: ImageSliderProps) => {
       {images.map((image, index) => (
         <SwiperSlide key={image} className="">
           <Image
+            placeholder="blur"
+            blurDataURL={blurImageUrls[index]}
             src={image}
             alt={`Perfume ${index}`}
-            layout="fill"
-            objectFit="cover"
+            fill
+            className="object-cover"
           />
         </SwiperSlide>
       ))}

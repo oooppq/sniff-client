@@ -1,6 +1,7 @@
 import InfinitePerfumeList from '@/components/common/InfinitePerfumeList';
 import { TPerfume } from '@/types';
 import Image from 'next/image';
+import { getPlaiceholder } from 'plaiceholder';
 
 interface DetailPageTemplateProps {
   sort: string;
@@ -27,11 +28,19 @@ const DetailPageTemplate = async ({
 
   const info = await res.json();
 
+  const buffer = await fetch(info.background).then(async (bres) =>
+    Buffer.from(await bres.arrayBuffer()),
+  );
+
+  const { base64 } = await getPlaiceholder(buffer);
+
   return (
     <div className="text-acodewhite">
       <div className="relative h-[386px] px-4">
         <Image
-          src={info.background || '/images/detail-temp-bg.png'} // 임시로 지정해둠 변경해야됨
+          placeholder="blur"
+          blurDataURL={base64}
+          src={info.background} // 임시로 지정해둠 변경해야됨
           fill
           style={{ objectFit: 'cover', zIndex: -1 }}
           alt="detail bg"

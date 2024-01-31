@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ad1 from '@/public/images/ad1.png';
 
-const Menu = () => {
+const Menu = async () => {
   return (
     <div className="mt-9 px-4 flex text-[14px] overflow-auto">
       <Link
@@ -43,7 +43,8 @@ const Menu = () => {
       >
         <Image
           src={ad1}
-          placeholder="empty"
+          placeholder="blur"
+          blurDataURL={ad1.blurDataURL}
           className="h-[95px] w-[198px]"
           alt="ad banner"
           height={95}

@@ -1,12 +1,19 @@
 import { TPerfume } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getPlaiceholder } from 'plaiceholder';
 
 interface PerfumeListElementProps {
   perfume: TPerfume;
 }
 
-const PerfumeListElement = ({ perfume }: PerfumeListElementProps) => {
+const PerfumeListElement = async ({ perfume }: PerfumeListElementProps) => {
+  const buffer = await fetch(perfume.poster!).then(async (res) =>
+    Buffer.from(await res.arrayBuffer()),
+  );
+
+  const { base64 } = await getPlaiceholder(buffer);
+
   return (
     <li className="w-full relative mb-[5px]">
       <Image
@@ -15,6 +22,8 @@ const PerfumeListElement = ({ perfume }: PerfumeListElementProps) => {
         style={{ objectFit: 'cover', zIndex: -1 }}
         alt="perfume pg"
         quality={100}
+        placeholder="blur"
+        blurDataURL={base64}
       />
       <Link
         href={`perfumes/${perfume.fragranceId}`}

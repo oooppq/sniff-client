@@ -11,7 +11,7 @@ const PerfumeItem = ({ perfume }: PerfumeItemProps) => {
     <Link href={`/perfumes/${perfume.fragranceId}`} className="h-[187px]">
       <div className="relative h-[140px]">
         <Image
-          src={perfume.thumbnail || '/images/perfume-temp-bg.png'}
+          src={perfume.thumbnail!}
           alt="perfume"
           style={{ objectFit: 'cover' }}
           className="!h-[140px] rounded-[4px]"

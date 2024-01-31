@@ -7,6 +7,7 @@ import Navbar from '@/components/detail/NavBar';
 import PerfumeDetailList from '@/components/detail/PerfumeDetailList';
 import { redirect } from 'next/navigation';
 import { getSession } from '@/utils/auth';
+import { getPlaiceholder } from 'plaiceholder';
 
 interface DetailPageProps {
   params: { id: string };
@@ -49,10 +50,21 @@ const page = async ({ params, searchParams }: DetailPageProps) => {
   } = await res.json();
 
   const images = [thumbnail, image1, image2].filter((image) => image);
+  const blurImageUrls = await Promise.all(
+    images.map(async (image) => {
+      const buffer = await fetch(image).then(async (bres) =>
+        Buffer.from(await bres.arrayBuffer()),
+      );
+
+      const { base64 } = await getPlaiceholder(buffer);
+      return base64;
+    }),
+  );
+
   return (
     <section className="mb-[186px]">
       <Navbar id={params.id} initialWishState={scraped} />
-      <ImageSlider images={images} />
+      <ImageSlider images={images} blurImageUrls={blurImageUrls} />
       <PerfumeInfo
         brandName={brandName}
         fragranceName={fragranceName}
