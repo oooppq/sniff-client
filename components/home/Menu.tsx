@@ -38,29 +38,37 @@ const Menu = () => {
       </Link>
       <Link
         href="https://www.instagram.com/p/C2FblOvJIrm/?igsh=MWd6dnJiODBoN2gxbg=="
-        className="relative shrink-0 w-[198px] h-[95px] ml-4 pt-[14px] pl-[15px] text-acodewhite rounded-[4px] flex flex-col overflow-hidden"
+        className="relative shrink-0 w-[198px] h-[95px] ml-4 text-acodewhite rounded-[4px] flex flex-col overflow-hidden"
         target="_blank"
       >
-        <Image src={ad1} fill className="object-cover -z-10" alt="ad banner" />
-        <span className="body2 font-medium mb-auto">
+        <Image
+          src={ad1}
+          placeholder="empty"
+          className="h-[95px] w-[198px]"
+          alt="ad banner"
+          height={95}
+          width={198}
+          quality={50}
+        />
+        <span className="absolute w-full h-full body2 font-medium mb-auto  pt-[14px] pl-[15px]">
           지하 주차장 냄새
           <br />
           좋아하는 사람, 손
-        </span>
-        <span className="caption1 font-medium mb-[11px] flex items-center">
-          더 보러 가기
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 18 18"
-            fill="none"
-          >
-            <path
-              d="M12.129 8.24952L8.106 4.22652L9.1665 3.16602L15 8.99952L9.1665 14.833L8.106 13.7725L12.129 9.74952H3V8.24952H12.129Z"
-              fill="#DBDBDB"
-            />
-          </svg>
+          <span className="caption1 font-medium mt-[7px] flex items-center">
+            더 보러 가기
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+            >
+              <path
+                d="M12.129 8.24952L8.106 4.22652L9.1665 3.16602L15 8.99952L9.1665 14.833L8.106 13.7725L12.129 9.74952H3V8.24952H12.129Z"
+                fill="#DBDBDB"
+              />
+            </svg>
+          </span>
         </span>
       </Link>
     </div>
