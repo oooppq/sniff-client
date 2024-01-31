@@ -66,7 +66,7 @@ function Modal({ onReturn }: ModalProps) {
             {selectedOptions.map((option) => (
               <div
                 key={option}
-                className="body2 text-acodewhite bg-black border flex items-center justify-center rounded-[50px] mr-1 px-[10px]"
+                className="body2 text-acodewhite bg-black border-black flex items-center justify-center rounded-[50px] mr-1 px-[10px]"
               >
                 <span className="">{option}</span>
                 <button
@@ -123,16 +123,16 @@ function Modal({ onReturn }: ModalProps) {
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-end">
           <div
-            className="bg-white shadow-lg mx-auto w-full h-[491px]"
+            className="bg-white shadow-lg mx-auto w-full h-[560px]"
             ref={modalRef}
           >
-            <div className="flex flex-col justify-center items-center mt-[26px] w-full">
+            <div className="flex flex-col justify-center items-center mt-[30px] w-full">
               <div className="h1 text-acodblack mb-[10px]">스타일</div>
               <div className="caption2 text-acodegray-300">
                 *최대 3개까지 고를 수 있습니다
               </div>
             </div>
-            <div className="flex flex-row flex-wrap gap-x-2.5 gap-y-3 mt-6 mb-5 mx-[30px]">
+            <div className="flex flex-row flex-wrap gap-x-2.5 gap-y-3 mt-6 mb-[48px] mx-[34px]">
               {STYLEOPTIONS.map((option) => (
                 <button
                   type="button"
@@ -157,7 +157,7 @@ function Modal({ onReturn }: ModalProps) {
                   selectedOptions.length > 0
                     ? 'bg-acodeblack'
                     : 'bg-acodegray-300'
-                } w-full text-white py-3 px-4 rounded transition`}
+                } w-full mx-4 h-[56px] text-white py-3 px-4 rounded transition`}
                 onClick={completeSelection}
                 disabled={selectedOptions.length === 0}
               >

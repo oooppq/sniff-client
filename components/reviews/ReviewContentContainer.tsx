@@ -194,10 +194,10 @@ const ReviewContentContainer = ({ id }: { id: string }) => {
       <TextReview onChange={setTextReview} />
       <hr className="my-11 mx-4 border-t-[1.5px] border-acodegray-50" />
       <InputPhoto onChange={setPhotos} />
-      <div className="flex justify-center pb-4">
+      <div className="flex justify-center pb-4 mx-4">
         <button
           type="button"
-          className="bg-acodeblack w-full text-white  py-3 px-4 rounded"
+          className="bg-acodeblack w-full h-[56px] text-white  py-3 px-4 rounded"
           onClick={() => handleSubmit()}
         >
           올리기

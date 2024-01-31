@@ -39,8 +39,11 @@ const InputPhoto = ({ onChange }: { onChange: (photos: File[]) => void }) => {
         aria-hidden
       >
         <span>사진 첨부</span>
-        <span className="block text-acodegray-300 ml-3 h-4 text-[16px] font-medium mb-[2px] leading-[16px] mr-auto">
+        <span className="block text-acodegray-400 ml-3 h-4 text-[16px] font-medium mb-[2px] leading-[16px] mr-[14px]">
           (선택)
+        </span>
+        <span className="text-acodegray-300 caption2 mr-auto">
+          *최대 3장까지 가능합니다
         </span>
 
         <button type="button">

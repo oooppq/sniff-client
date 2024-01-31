@@ -36,7 +36,8 @@ const TextReview = ({ onChange }: TextReviewProps) => {
             value={text}
             onChange={handleTextChange}
             maxLength={1000}
-            className="w-full bg-acodegray-50 px-[14px] py-[11px] body2 h-40 resize-none outline-none rounded-[8px]"
+            className="w-full body2 bg-acodegray-50 px-[14px] py-[11px] body2 h-40 resize-none outline-none rounded-[8px] placeholder:text-acodegray-300 "
+            placeholder="텍스트 리뷰를 작성해주세요"
           />
           <div className="text-right caption1 mr-[14px] text-acodegray-700">
             {text.length}/<span className="text-acodegray-300">1000</span>
