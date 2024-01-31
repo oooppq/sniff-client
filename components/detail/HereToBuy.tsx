@@ -3,8 +3,6 @@ import Link from 'next/link';
 
 interface BuyProps {
   id: string;
-  brandName: string;
-  fragranceName: string;
 }
 
 export async function getPurchase(id: string) {
@@ -20,24 +18,32 @@ export async function getPurchase(id: string) {
   return data;
 }
 
-const HereTobuy = async ({ id, brandName, fragranceName }: BuyProps) => {
+const HereTobuy = async ({ id }: BuyProps) => {
   const data = await getPurchase(id);
 
   if (!data) return null;
 
-  return data.purchaseList ? (
+  return (
     <>
       <hr className="my-11 mx-4 mborder-t-[1.5px] border-[#f7f7f7]" />
       <div className="mx-4">
         <div className="h2 mb-[30px]">여기서 구매할 수 있어요</div>
         <div className="grid gap-y-3">
-          {data.purchaseList.map(
-            ({ link, image }: { link: string; image: string }) => (
+          {data.purchaseList?.map(
+            ({
+              title,
+              link,
+              image,
+            }: {
+              title: string;
+              link: string;
+              image: string;
+            }) => (
               <Link key={`${link}-${image}`} href={link} target="_blank">
                 <div className="flex items-center">
                   <Image
                     src={image}
-                    alt="sinse"
+                    alt="vendor"
                     width={80}
                     height={80}
                     objectFit="cover"
@@ -45,22 +51,26 @@ const HereTobuy = async ({ id, brandName, fragranceName }: BuyProps) => {
                   />
 
                   <div className="flex flex-col justify-center body2 font-medium">
-                    <div className="mb-[10px]">{fragranceName} 판매처</div>
+                    <div className="mb-[10px]">{title}</div>
                     <div className="h-[21px] mb-[2px] text-acodegray-500">
-                      {brandName}
+                      {data.brandName}
                     </div>
                     <div className="leading-[14px] tracking-[-0.35px] text-acodegray-700">
-                      {fragranceName}
+                      {data.fragranceName}
                     </div>
                   </div>
                 </div>
               </Link>
             ),
+          ) || (
+            <div className="body2 h-20 w-full bg-acodegray-50 inline-flex items-center justify-center text-acodegray-300 rounded">
+              구매처를 찾는 중이에요
+            </div>
           )}
         </div>
       </div>
     </>
-  ) : null;
+  );
 };
 
 export default HereTobuy;

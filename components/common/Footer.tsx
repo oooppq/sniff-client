@@ -21,12 +21,18 @@ const Footer = () => {
       <div className="flex mr-[15px] mb-[21px] text-[10px] font-medium text-acodegray-400 leading-[15px]">
         <AcodeLogoGray className="mr-auto" />
         <Link
-          href="https://www.notion.so/b64e9e00aa364583ad9906080210f853?pvs=4"
+          href="https://salt-word-413.notion.site/b64e9e00aa364583ad9906080210f853?pvs=4"
+          className="mt-1 mr-5"
+          target="_blank"
+        >
+          이용약관
+        </Link>
+        <Link
+          href="https://salt-word-413.notion.site/c96a9bd394c34e6fbe4822b9eb52a77a?pvs=4"
           className="mt-1"
           target="_blank"
         >
-          <span className="mr-5">이용약관</span>
-          <span className="">개인정보 처리 방침</span>
+          개인정보 처리 방침
         </Link>
       </div>
       <div className="text-[10px] font-medium text-acodegray-400 leading-[15px] grid grid-cols-[61px_188px] gap-x-[17px] mb-[25px]">
