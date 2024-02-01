@@ -1,4 +1,8 @@
-import { RedFullStar, RedEmptyStar, RedHalfStar } from '@/public/images';
+import {
+  SmallRedHalfStar,
+  SmallRedFullStar,
+  SmallRedEmptyStar,
+} from '@/public/images';
 
 interface MoreReviewTopProps {
   reviewCnt: number;
@@ -15,13 +19,13 @@ const MoreReviewTop = ({ reviewCnt, rateSum }: MoreReviewTopProps) => {
       <div className="text-[18px] font-medium leading-[18px] tracking-[-0.45px] text-acodeblack mr-4">
         리뷰 {reviewCnt}개
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center mb-[4px]">
         {Array.from({ length: fullStars }, (_, i) => (
-          <RedFullStar key={i} />
+          <SmallRedFullStar key={i} />
         ))}
-        {halfStar > 0 && <RedHalfStar />}
+        {halfStar > 0 && <SmallRedHalfStar />}
         {Array.from({ length: emptyStars }, (_, i) => (
-          <RedEmptyStar key={i} />
+          <SmallRedEmptyStar key={i} />
         ))}
       </div>
     </div>

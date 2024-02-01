@@ -19,7 +19,7 @@ export default function Home({ searchParams }: HomePageProps) {
       <Menu />
       <PerfumeList searchParams={searchParams} />
       <div className="w-full mt-9 pl-4">
-        <h3 className="ml-[10.5px] text-[16px] font-semibold tracking-[-0.4px] text-acodegray-500">
+        <h3 className="text-[16px] font-semibold tracking-[-0.4px] text-acodegray-500">
           <span className="text-acodeblack mr-[5px]">{category}</span>
           계열의 향수
         </h3>

@@ -34,6 +34,7 @@ const ReviewContentContainer = ({ id }: { id: string }) => {
   const [oneLineCommentError, setOneLineCommentError] =
     useState<boolean>(false);
   const [keyWordReviewError, setKeyWordReviewError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
   const userInfo = useSession();
 
@@ -62,6 +63,8 @@ const ReviewContentContainer = ({ id }: { id: string }) => {
   const token = session?.jwt;
 
   const handleSubmit = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
     let isValid = true;
     setStarRatingError(false);
     setOneLineCommentError(false);
@@ -151,6 +154,7 @@ const ReviewContentContainer = ({ id }: { id: string }) => {
           method: 'POST',
         });
       }
+      setIsLoading(true);
       router.push('/login?invalid=true');
       return;
     }

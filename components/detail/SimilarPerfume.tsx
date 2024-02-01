@@ -1,3 +1,4 @@
+import { SmallCircleIcon } from '@/public/images';
 import Image from 'next/image';
 import Link from 'next/link';
 // import { getPlaiceholder } from 'plaiceholder';
@@ -11,6 +12,7 @@ interface Fragrance {
   thumbnail: string;
   fragranceName: string;
   brandName: string;
+  concentration: string;
 }
 
 async function getSimilar(id: string) {
@@ -42,6 +44,7 @@ const SimilarPerfume = async ({ id }: SimilarProps) => {
   //     return base64;
   //   }),
   // );
+
   return (
     <div className="">
       <div className="text-acodeblack h2 mb-5 mx-4">이런 향수는 어때요?</div>
@@ -50,19 +53,22 @@ const SimilarPerfume = async ({ id }: SimilarProps) => {
           <Link
             href={`/perfumes/${perfume.fragranceId}`}
             key={perfume.fragranceName}
-            className="relative w-[138px] h-[138px] shrink-0"
+            className="relative w-[138px] shrink-0"
           >
             <Image
               // placeholder="blur"
               // blurDataURL={blurImageUrls[index]}
               src={perfume.thumbnail}
               alt={`Test Perfume ${index + 1}`}
-              fill
-              className="w-[138px] h-[138px] rounded-[4px] object-cover"
+              width={138}
+              height={138}
+              className="w-[138px] object-cover rounded-[4px]"
             />
             <div className="w-[134px] h-[35px] flex flex-col justify-center bg-white pl-[2px] mt-[10px]">
-              <div className="text-acodegray-500 caption2 mb-1">
+              <div className="text-acodegray-500 caption2 mb-1 flex items-center">
                 {perfume.brandName}
+                <SmallCircleIcon className="fill-acodegray-500 mx-1" />
+                {perfume.concentration}
               </div>
               <div className="text-acodeblack similar-1">
                 {perfume.fragranceName}

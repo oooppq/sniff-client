@@ -15,17 +15,13 @@ interface WishPreviewItemProps {
 const WishPreviewItem = ({ perfume }: WishPreviewItemProps) => {
   const { isWishOn, handleClickWish } = useWish(perfume.fragranceId, true);
   return (
-    <li className="relative h-[158px] w-[138px] shrink-0">
-      <Link
-        href={`/perfumes/${perfume.fragranceId}`}
-        className="h-full w-full border-[1.5px] border-acodegray-50 rounded-[4px] overflow-clip flex items-center justify-center"
-      >
+    <li className="relative h-[158px] w-[138px] border-[1.5px] border-acodegray-50 shrink-0 flex items-center justify-center rounded overflow-hidden">
+      <Link href={`/perfumes/${perfume.fragranceId}`} className="">
         <Image
           src={perfume.thumbnail}
-          className="w-[158px] h-[158px]"
+          className="object-cover"
+          fill
           alt="perfume"
-          width={158}
-          height={158}
         />
         <button
           type="button"

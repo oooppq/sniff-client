@@ -25,14 +25,14 @@ const HomeNav = () => {
         </button>
         <Link
           href="/"
-          className="absolute top-[20.5px] left-1/2 -translate-x-2/4"
+          className="fixed top-[13px] left-1/2 -translate-x-2/4 h-[30px] flex items-center"
         >
           <AcodeLogoSmall />
         </Link>
-        <Link href="/search" className="mt-[3px] mr-[11px]">
+        <Link href="/search" className="mr-[11px]">
           <SearchIcon className="fill-acodeblack" />
         </Link>
-        <Link href="/mypage" className="mt-[3px]">
+        <Link href="/mypage" className="">
           <UserIcon className="fill-acodeblack" />
         </Link>
       </div>

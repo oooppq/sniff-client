@@ -33,7 +33,10 @@ export { default as EasyOffIcon } from './easy-off-icon.svg';
 
 export { default as RedFullStar } from './full-star.svg';
 export { default as RedHalfStar } from './half-star.svg';
-export { default as RedEmptyStar } from './empty-star.svg';
+export { default as RedEmptyStar } from './red-empty-star-icon.svg';
+export { default as SmallRedFullStar } from './red-small-full-star-icon.svg';
+export { default as SmallRedHalfStar } from './red-small-half-star-icon.svg';
+export { default as SmallRedEmptyStar } from './red-small-empty-star-icon.svg';
 
 export { default as BlackFullStar } from './black-full-star.svg';
 export { default as BlackEmptyStar } from './black-empty-star.svg';
@@ -62,7 +65,6 @@ export { default as HomeIcon } from './Homeicon.svg';
 export { default as BookMarkOffIcon } from './bookmarkoff.svg';
 export { default as BookMarkOnIcon } from './bookmarkon.svg';
 
-
 export { default as Onboarding1 } from './onboarding1.png';
 export { default as Onboarding2 } from './onboarding2.png';
 export { default as Onboarding3 } from './onboarding3.png';
@@ -80,28 +82,27 @@ export { default as Fruit } from './fruit.jpg';
 export { default as Testing } from './testing.svg';
 
 export { default as AcodeLogo } from './AcodeLogo.svg';
-export { default as Loading1} from './Loading1.svg';
-export { default as Loading2} from './Loading2.svg';
-export { default as Loading3} from './Loading3.svg';
-export { default as Loading4} from './Loading4.svg';
+export { default as Loading1 } from './Loading1.svg';
+export { default as Loading2 } from './Loading2.svg';
+export { default as Loading3 } from './Loading3.svg';
+export { default as Loading4 } from './Loading4.svg';
 
-export { default as Klogo} from './klogo.svg';
-export { default as LinkLogo} from './linklogo.svg';
-export {default as AcodeLogoSmallBlack} from './AcodeLogobaby.svg';
-export {default as RealArrow} from './realArrow.svg';
+export { default as Klogo } from './klogo.svg';
+export { default as LinkLogo } from './linklogo.svg';
+export { default as AcodeLogoSmallBlack } from './AcodeLogobaby.svg';
+export { default as RealArrow } from './realArrow.svg';
 
+export { default as WoodyGray } from './Woody-gray.png';
+export { default as EarthyGray } from './Earthy-gray.png';
+export { default as FloralGray } from './Floral-gray.png';
+export { default as GreenGray } from './Green-gray.png';
+export { default as CitrusGray } from './Citrus-gray.png';
+export { default as ChypreGray } from './Chypre-gray.png';
+export { default as AldehydeGray } from './Aldehyde-gray.png';
+export { default as AromaticGray } from './Aromatic-gray.png';
+export { default as LeatherGray } from './Leather-gray.png';
+export { default as SpicyGray } from './Spicy-gray.png';
+export { default as FruityGray } from './Fruity-gray.png';
+export { default as FougereGray } from './Fougere-gray.png';
 
-export { default as WoodyGray} from './Woody-gray.png';
-export { default as EarthyGray} from './Earthy-gray.png';
-export { default as FloralGray} from './Floral-gray.png';
-export { default as GreenGray} from './Green-gray.png';
-export { default as CitrusGray} from './Citrus-gray.png';
-export { default as ChypreGray} from './Chypre-gray.png';
-export { default as AldehydeGray} from './Aldehyde-gray.png';
-export { default as AromaticGray} from './Aromatic-gray.png';
-export { default as LeatherGray} from './Leather-gray.png';
-export { default as SpicyGray} from './Spicy-gray.png';
-export { default as FruityGray} from './Fruity-gray.png';
-export { default as FougereGray} from './Fougere-gray.png';
-
-export {default as KakaoShare} from './KakaoShare.png';
+export { default as KakaoShare } from './KakaoShare.png';

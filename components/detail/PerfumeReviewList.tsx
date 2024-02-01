@@ -2,9 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-  RedFullStar,
-  RedEmptyStar,
-  RedHalfStar,
+  SmallRedHalfStar,
+  SmallRedFullStar,
+  SmallRedEmptyStar,
   BlackEmptyStar,
   BlackFullStar,
   NoReview,
@@ -58,20 +58,22 @@ const ReviewContent = async ({ id }: PerfumeReviewProps) => {
   return (
     <div className="mx-4">
       <div>
-        <div className="flex justify-between items-center mb-[30px]">
+        <div className="flex justify-between mb-[30px]">
           <div className="flex">
             {Array.from({ length: fullStars }, (_, i) => (
-              <RedFullStar key={i} className="mt-[1px]" />
+              <SmallRedFullStar key={i} className="mt-[1px] " />
             ))}
-            {halfStar > 0 && <RedHalfStar className="mt-[1px]" />}
+            {halfStar > 0 && <SmallRedHalfStar className="mt-[1px] " />}
             {Array.from({ length: emptyStars }, (_, i) => (
-              <RedEmptyStar key={i} className="mt-[1px]" />
+              <SmallRedEmptyStar key={i} className="mt-[1px]" />
             ))}
-            <div className="text-acodegray-400 ml-2">{data.reviewCnt}건</div>
+            <div className="text-acodegray-400 ml-2 mb-[3px]">
+              {data.reviewCnt}건
+            </div>
           </div>
           <Link
             href={`/perfumes/${data.fragranceId}/reviews`}
-            className="caption2 text-acodegray-300 text-right flex items-center"
+            className="caption2 text-acodegray-300 text-right flex items-center mb-[3px]"
           >
             <span className="">리뷰 더보기</span>
             <svg

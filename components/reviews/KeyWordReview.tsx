@@ -19,7 +19,7 @@ const KeyWordReview = ({
 }: KeyWordReviewProps) => {
   const seasons = ['봄', '여름', '가을', '겨울', '사계절'];
   const persistence = ['1시간', '3-4시간', '반나절', '하루종일'];
-  const intensity = ['약함', '보통', '진함', '아주진함'];
+  const intensity = ['약함', '보통', '진함', '아주 진함'];
 
   return (
     <div className="mx-4">

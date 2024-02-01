@@ -53,13 +53,16 @@ const InputPhoto = ({ onChange }: { onChange: (photos: File[]) => void }) => {
       {isSpread ? (
         <div className="flex flex-row items-center space-x-2">
           {photos.map((photo, index) => (
-            <div key={photo.name} className="relative">
+            <div
+              key={photo.name}
+              className="relative w-24 h-24 overflow-hidden rounded"
+            >
               <Image
                 src={URL.createObjectURL(photo)}
                 alt={`Preview ${index + 1}`}
                 width={96}
                 height={96}
-                className="w-24 h-24 rounded"
+                className="w-24 object-cover"
               />
               <button
                 type="button"

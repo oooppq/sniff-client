@@ -82,12 +82,20 @@ const page = async ({ searchParams }: MyPageProps) => {
       </div>
       <hr className="mt-9 mb-[34px] border-[3px] border-acodegray-50" />
       <div className="flex flex-col mx-4">
-        <Link href="/mypage" className="body1">
+        <Link
+          className="body1"
+          href="https://docs.google.com/forms/d/e/1FAIpQLScViRETa4DlBZZ6HQKKD0PPlEj3zfdYjPaEPS9bs3nbHTOJgQ/viewform?usp=sharing"
+          target="_blank"
+        >
           향수 제품 추가 요청
         </Link>
         <hr className="mt-[17px] mb-[18px] border-top-[1.5px] border-acodegray-50" />
-        <Link href="/mypage" className="body1">
-          광고 제휴 문의
+        <Link
+          className="body1"
+          href="https://docs.google.com/forms/d/e/1FAIpQLScdUKIiEcWXK7DAn7fmf9HxAG4epWDRTfTfQg6EQu0JPf5ScA/viewform?usp=sharing"
+          target="_blank"
+        >
+          광고 제휴 및 입점 문의
         </Link>
         <div className="flex flex-col mt-[94px] mb-[41px]">
           <LogoutButton />

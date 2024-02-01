@@ -20,6 +20,7 @@ export interface TPerfume {
   price?: number;
   capacity?: string;
   scraped?: boolean;
+  concentration?: string;
 }
 
 export interface TBrand {

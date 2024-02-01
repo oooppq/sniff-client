@@ -62,7 +62,7 @@ const page = async ({ params, searchParams }: DetailPageProps) => {
   // );
 
   return (
-    <section className="">
+    <section className="pb-[100px]">
       <Navbar id={params.id} initialWishState={scraped} />
       <ImageSlider images={images} />
       <PerfumeInfo

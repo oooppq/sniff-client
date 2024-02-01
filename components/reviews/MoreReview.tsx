@@ -83,11 +83,11 @@ const MoreReview = ({ id, initialReviewData }: PerfumeReviewProps) => {
               .filter((photo) => photo)
               .map((photo, photoIndex) => (
                 <div key={photo} className="item-center mb-5">
-                  <div className="relative w-[115px] h-[115px] overflow-hidden rounded-[4px]">
+                  <div className="relative w-[115px] h-[115px]  overflow-hidden rounded-[4px]">
                     <Image
                       src={photo}
                       alt={`Review Image ${photoIndex}`}
-                      className="rounded-md"
+                      className="rounded-md object-cover"
                       fill
                     />
                   </div>

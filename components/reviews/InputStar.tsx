@@ -29,7 +29,7 @@ const InputStar = ({ maxRating = 5, onRatingChange }: InputStarProps) => {
               {i < rating ? (
                 <RedFullStar className="text-red-500" />
               ) : (
-                <RedEmptyStar className="text-gray-300" />
+                <RedEmptyStar className="text-gray-300 w-6" />
               )}
             </button>
           ))}

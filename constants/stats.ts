@@ -14,7 +14,7 @@ export const longevityMapping: { [key: string]: string } = {
 };
 
 export const intensityMapping: { [key: string]: string } = {
-  INTENSE: '아주진함',
+  INTENSE: '아주 진함',
   STRONG: '진함',
   MEDIUM: '보통',
   WEAK: '약함',
@@ -62,7 +62,7 @@ export const intensityMappingR: { [key: string]: string } = {
   약함: 'WEAK',
   보통: 'MEDIUM',
   진함: 'STRONG',
-  아주진함: 'INTENSE',
+  '아주 진함': 'INTENSE',
 };
 export const styleMappingR: { [key: string]: string } = {
   시크한: 'CHIC',
