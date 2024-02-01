@@ -100,7 +100,7 @@ const ReviewContent = async ({ id }: PerfumeReviewProps) => {
 
         <div className="flex gap-[14px] w-full">
           {photos.map((photo, index: number) => (
-            <div key={photo} className="relative w-1/3 pb-[30.7%] mb-5">
+            <div key={photo} className="relative w-1/3 pb-[33%] mb-5">
               <Image
                 src={photo}
                 alt={`Thumbnail ${index + 1}`}
