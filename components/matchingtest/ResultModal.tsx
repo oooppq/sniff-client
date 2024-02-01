@@ -72,14 +72,13 @@ const ResultModal = ({ onClose }: ResultModalProps) => {
     if (window.Kakao) {
       const kakao = window.Kakao;
       const appKey = process.env.NEXT_PUBLIC_KAKAO_APP_KEY;
-      const templateId = 103731;
+      const templateId = 103843;
       if (!kakao.isInitialized()) {
         kakao.init(appKey);
       }
       kakao.Share.sendCustom({
         templateId,
         templateArgs: {
-          btnTitle: '테스트하러가기',
           id: Currentlocation,
         },
       });

@@ -40,8 +40,6 @@ const Page = () => {
     setSelections((prev) => ({ ...prev, [category]: selection }));
   };
 
-  // handleSumbit 수정
-
   const handleSubmit = () => {
     Object.entries(selections).forEach(([key, value]) => {
       if (Array.isArray(value)) {
