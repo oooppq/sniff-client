@@ -20,7 +20,7 @@ const page = () => {
         향수에 입문해보아요
       </h3>
       <BigLinkButton
-        to="/find-taste/test"
+        to="/find-taste"
         buttonStyle="absolute bg-acodeblack text-white font-semibold h-[56px] bottom-[67px] text-[18px] left-[50%] -translate-x-2/4"
       >
         나에게 어울리는 향수 추천 받기
