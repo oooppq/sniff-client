@@ -1,15 +1,10 @@
-import {
-  Loading1,
-  Loading2,
-  Loading3,
-  Loading4,
-  Orange,
-} from '@/public/images';
+import { Loading1, Loading2, Loading3, Loading4 } from '@/public/images';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Header from '@/components/matchingtest/Header';
 import Image from 'next/image';
 import Link from 'next/link';
+import Ad2 from '@/public/images/ad2.png';
 
 interface LoadingPageProps {
   setIsDone: React.Dispatch<React.SetStateAction<boolean>>;
@@ -63,18 +58,20 @@ const Loading = ({ setIsDone }: LoadingPageProps) => {
         target="_blank"
       >
         <Image
-          src={Orange}
-          className="h-[106px] w-full"
+          src={Ad2}
+          className="w-full object-cover"
           alt="loading ad"
-          height={106}
+          fill
           quality={50}
+          placeholder="blur"
+          blurDataURL={Ad2.blurDataURL}
         />
         <span className="absolute font-bold w-full h-full h2 mt-[26px] pl-[16px]">
-          하늘 아래
+          흥미진진한 향수
           <br />
-          같은 오렌지는 없다
+          <span className="text-acodered">가십</span>이 궁금하다면
         </span>
-        <span className="absolute caption1 text-[#DBDBDB] w-full h-full flex mt-[26px] pr-[16px] justify-end items-cencter">
+        <span className="absolute caption1 font-medium text-[#DBDBDB] w-full h-full flex mt-[26px] pr-[16px] justify-end items-cencter">
           더 보러 가기
           <svg
             xmlns="http://www.w3.org/2000/svg"

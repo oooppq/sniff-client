@@ -27,14 +27,14 @@ const MyPageModalTemplate = ({
         <div className="absolute bottom-5 left-4 right-4 flex justify-between">
           <button
             type="button"
-            className="h2 text-acodeblack h-14 w-[166px] rounded-[4px] bg-acodegray-50"
+            className="h2 text-acodeblack h-14 flex-1 min-w-[166px] mr-[5.5px] rounded-[4px] bg-acodegray-50"
             onClick={closeModal}
           >
             취소
           </button>
           <button
             type="button"
-            className="h2 text-acodewhite h-14 w-[166px] rounded-[4px] bg-acodeblack"
+            className="h2 text-acodewhite h-14 flex-1 min-w-[166px] ml-[5.5px] rounded-[4px] bg-acodeblack"
             onClick={handleClickOk}
           >
             확인

@@ -62,9 +62,11 @@ const page = async ({ searchParams }: MyPageProps) => {
       <div className="mt-9 mx-4">
         <div className="flex items-center">
           <h3 className="h2 mr-auto">스크랩</h3>
-          <Link href="mypage/wish" className="body2 text-acodegray-500">
-            모두 보기
-          </Link>
+          {user.scraps.length ? (
+            <Link href="mypage/wish" className="body2 text-acodegray-500">
+              모두 보기
+            </Link>
+          ) : null}
         </div>
         {user.scraps.length ? (
           <ul className="flex mt-5 overflow-auto gap-[14px]">
