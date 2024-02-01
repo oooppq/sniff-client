@@ -28,7 +28,7 @@ const HereTobuy = async ({ id }: BuyProps) => {
       <hr className="my-11 mx-4 mborder-t-[1.5px] border-[#f7f7f7]" />
       <div className="mx-4">
         <div className="h2 mb-[30px]">여기서 구매할 수 있어요</div>
-        <div className="grid gap-y-3 mb-[166px]">
+        <div className="grid gap-y-3 mb-[100px]">
           {data.purchaseList?.map(
             ({
               title,
