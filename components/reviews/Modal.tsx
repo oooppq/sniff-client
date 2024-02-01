@@ -123,7 +123,7 @@ function Modal({ onReturn }: ModalProps) {
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-end">
           <div
-            className="bg-white shadow-lg mx-auto w-full h-[560px]"
+            className="bg-white shadow-lg mx-auto w-[430px] h-[560px]"
             ref={modalRef}
           >
             <div className="flex flex-col justify-center items-center mt-[30px] w-full">
