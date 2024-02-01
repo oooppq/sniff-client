@@ -53,7 +53,7 @@ const Loading = ({ setIsDone }: LoadingPageProps) => {
         {icons[currentIconIndex]}
       </div>
       <Link
-        href="https://www.instagram.com/p/C2ubAbGvtYB/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+        href="https://www.instagram.com/acode_officiel?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
         className="relative shrink-0 w-full h-[106px] text-acodewhite flex flex-col overflow-hidden"
         target="_blank"
       >
