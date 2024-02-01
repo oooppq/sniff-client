@@ -24,6 +24,7 @@ const ImageSlider = ({ images }: ImageSliderProps) => {
           <Image
             // placeholder="blur"
             // blurDataURL={blurImageUrls[index]}
+            priority
             src={image}
             alt={`Perfume ${index}`}
             fill

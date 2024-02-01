@@ -91,6 +91,7 @@ const ReviewContentContainer = ({ id }: { id: string }) => {
     }
 
     if (!isValid) {
+      setIsLoading(false);
       return;
     }
 
@@ -109,6 +110,7 @@ const ReviewContentContainer = ({ id }: { id: string }) => {
         });
 
         if (!uploadResponse.ok) {
+          setIsLoading(false);
           return;
         }
 
@@ -154,11 +156,12 @@ const ReviewContentContainer = ({ id }: { id: string }) => {
           method: 'POST',
         });
       }
-      setIsLoading(true);
+      setIsLoading(false);
       router.push('/login?invalid=true');
       return;
     }
 
+    setIsLoading(false);
     router.refresh();
     router.push(`/perfumes/${id}?category=review`);
   };

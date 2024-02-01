@@ -43,6 +43,7 @@ const DetailPageTemplate = async ({
           src={info.background} // 임시로 지정해둠 변경해야됨
           fill
           style={{ objectFit: 'cover', zIndex: -1 }}
+          priority
           alt="detail bg"
           quality={100}
         />
