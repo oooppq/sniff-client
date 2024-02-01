@@ -88,6 +88,7 @@ const Page = () => {
       name: 'individuality',
       component: (
         <Individuality
+          mainSelection={selections.main}
           updateSelection={(selection: string[]) =>
             updateSelections('individuality', selection)
           }

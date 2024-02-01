@@ -7,6 +7,7 @@ interface Fragrance {
   brandName: string;
   familyName: string;
   thumbnail: string;
+  concentration: string;
 }
 
 interface Style {
@@ -45,7 +46,7 @@ const Similar = ({ fragrance, style }: SimilarProps) => {
             />
             <div className="w-[134px] h-[35px] flex flex-col justify-center bg-white pl-[2px] mt-[10px]">
               <div className="text-acodegray-500 caption2 mb-1">
-                {perfume.brandName}
+                {perfume.brandName} · {perfume.concentration}
               </div>
               <div className="text-acodeblack similar-1 truncate">
                 {perfume.fragranceName}

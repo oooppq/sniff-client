@@ -3,9 +3,10 @@ import { useSwiper } from 'swiper/react';
 
 interface IndividualProps {
   updateSelection: (selection: string[]) => void;
+  mainSelection: string[];
 }
 
-const Individuality = ({ updateSelection }: IndividualProps) => {
+const Individuality = ({ updateSelection, mainSelection }: IndividualProps) => {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -105,10 +106,12 @@ const Individuality = ({ updateSelection }: IndividualProps) => {
       <div className="flex flex-col">
         <div className="h0 mb-[49px]">
           <div className="flex items-center">
-            어떤
-            <span className="h1 h-[34px]  bg-black ml-[8px] mr-[8px] text-white px-[14px] pt-[2px] rounded-sm">
-              개성적인 향
-            </span>
+            <span className="mr-[8px]">어떤</span>
+            {mainSelection.map((selection) => (
+              <span className="h1 h-[34px] bg-black mr-[8px] text-white px-[14px] pt-[2px] rounded-sm">
+                {selection}
+              </span>
+            ))}
             을
           </div>
           <div>원하시나요?</div>
