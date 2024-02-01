@@ -10,6 +10,7 @@ import {
   GreenGray,
   EarthyGray,
   FruityGray,
+  FougereGray,
 } from '@/public/images';
 import Image from 'next/image';
 
@@ -61,6 +62,9 @@ const UserStyle = ({ families }: UserStyleProps) => {
         break;
       case 'FRUITY':
         imageSrc = FruityGray;
+        break;
+      case 'FOUGERE':
+        imageSrc = FougereGray;
         break;
       default:
     }

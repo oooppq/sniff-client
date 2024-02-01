@@ -11,22 +11,6 @@ import SwiperHeader from '@/components/matchingtest/SwiperHeader';
 import Loading from '@/components/matchingtest/Loading';
 import { useRouter } from 'next/navigation';
 
-interface Family {
-  familyKorName: string;
-  familyEngName: string;
-  summary: string;
-  icon: string;
-  keyword: string[];
-}
-
-interface Fragrance {
-  fragranceId: number;
-  fragranceName: string;
-  brandName: string;
-  familyName: string;
-  thumbnail: string;
-}
-
 interface SelectionsState {
   persistence: string[];
   season: string[];
@@ -56,56 +40,21 @@ const Page = () => {
     setSelections((prev) => ({ ...prev, [category]: selection }));
   };
 
-  const handleSubmit = async () => {
-    const payload = {
-      concentration: selections.persistence,
-      season: selections.season,
-      mainFamily: selections.main,
-      scent: selections.individuality,
-      style: selections.vibe,
-    };
+  // handleSumbit 수정
 
-    try {
-      const res = await fetch(`/api/extract`, {
-        method: 'POST',
-        body: JSON.stringify({ payload }),
-      });
-
-      if (!res.ok) {
-        throw new Error(`Failed to send request: ${res.status}`);
+  const handleSubmit = () => {
+    Object.entries(selections).forEach(([key, value]) => {
+      if (Array.isArray(value)) {
+        value.forEach((val) => queryParams.append(`${key}`, val));
+      } else {
+        queryParams.append(`${key}`, value);
       }
+    });
 
-      const responseData = await res.json();
-
-      responseData.families.forEach((family: Family, familyIndex: number) => {
-        Object.entries(family).forEach(([key, value]) => {
-          if (Array.isArray(value)) {
-            value.forEach((val) =>
-              queryParams.append(`${key}[${familyIndex}]`, val),
-            );
-          } else {
-            queryParams.append(`${key}[${familyIndex}]`, value);
-          }
-        });
-      });
-      responseData.fragrances.forEach(
-        (fragrance: Fragrance, fragranceIndex: number) => {
-          Object.entries(fragrance).forEach(([key, value]) => {
-            queryParams.append(`${key}[${fragranceIndex}]`, value.toString());
-          });
-        },
-      );
-
-      queryParams.append(`style1`, selections.vibe[0]);
-      queryParams.append(`style2`, selections.vibe[1]);
-      // window.location.replace(`/loading/?${queryParams}`);
-      setQueryString(queryParams.toString());
-      setIsLoading(true);
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error('Error sending data:', error);
-    }
+    setQueryString(queryParams.toString());
+    setIsLoading(true);
   };
+
   const slides = [
     {
       name: 'persistence',

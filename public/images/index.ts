@@ -102,3 +102,6 @@ export { default as AromaticGray} from './Aromatic-gray.png';
 export { default as LeatherGray} from './Leather-gray.png';
 export { default as SpicyGray} from './Spicy-gray.png';
 export { default as FruityGray} from './Fruity-gray.png';
+export { default as FougereGray} from './Fougere-gray.png';
+
+export {default as KakaoShare} from './KakaoShare.png';

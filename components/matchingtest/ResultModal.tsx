@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
-import { LinkLogo, Klogo } from '@/public/images';
+import { LinkLogo, KakaoShare } from '@/public/images';
+import Image from 'next/image';
 
 interface ResultModalProps {
   onClose: () => void;
@@ -66,6 +66,25 @@ const ResultModal = ({ onClose }: ResultModalProps) => {
       copyToClipboardFallback(window.location.href);
     }
   };
+  const Currentlocation = window.location.search;
+
+  const kakaoShare = () => {
+    if (window.Kakao) {
+      const kakao = window.Kakao;
+      const appKey = process.env.NEXT_PUBLIC_KAKAO_APP_KEY;
+      const templateId = 103731;
+      if (!kakao.isInitialized()) {
+        kakao.init(appKey);
+      }
+      kakao.Share.sendCustom({
+        templateId,
+        templateArgs: {
+          btnTitle: '테스트하러가기',
+          id: Currentlocation,
+        },
+      });
+    }
+  };
   return (
     <div
       className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
@@ -88,10 +107,12 @@ const ResultModal = ({ onClose }: ResultModalProps) => {
         <div className="h1 text-center mb-4">공유하기</div>
         <div className="flex flex-row justify-center gap-x-10 h2">
           <div className="flex flex-col">
-            <div className="mb-2">
-              <Klogo />
-            </div>
-            <div>카카오톡</div>
+            <button type="button" onClick={() => kakaoShare()}>
+              <div className="mb-2">
+                <Image src={KakaoShare} alt="공유하기" />
+              </div>
+              <div>카카오톡</div>
+            </button>
           </div>
           <div
             className="flex flex-col"

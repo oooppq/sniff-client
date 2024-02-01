@@ -1,6 +1,7 @@
 import localFont from 'next/font/local';
 import type { Metadata } from 'next';
 import './globals.css';
+import KakaoScript from '@/components/matchingtest/KakaoScript';
 
 export const metadata: Metadata = {
   title: '어코드 | 프레그런스 큐레이션 플랫폼',
@@ -11,6 +12,12 @@ export const metadata: Metadata = {
     initialScale: 1,
   },
 };
+
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
 
 const myFont = localFont({
   src: './fonts/PretendardVariable.woff2',
@@ -27,6 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={myFont.className}>
       <body>{children}</body>
+      <KakaoScript />
     </html>
   );
 }
